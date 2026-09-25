@@ -15,8 +15,8 @@ The screens must read as **a finished Figma frame or a Dribbble/Behance shot**, 
 6. **Minimal surface, deep content.** Each screen shows only the essentials: one headline, a short line and one action. Everything else about the business still exists, but it sits behind interaction: expandable cards, "+" hotspots on an illustration, tabs, accordions, a drawer. The shot shows 1–2 of these in the open state so the builder knows the pattern.
 7. **Generous space.** Wide vertical rhythm between sections (160–240px on desktop), a clear 12-column grid, and a lot of calm area around each focal element.
 8. **Real product fragments.** Buttons, chips, a date picker, a WhatsApp preview bubble and a price or capacity tag, with believable text in the user's language. No lorem ipsum or gibberish.
-9. **An art concept, not a template.** Name a concept for the brand (e.g. "Verão de primavera: a tactile editorial poster") and a **material world** it is made of: risograph paper, cut paper, clay, felt, resin, letterpress, gold foil, screen print, ceramic, neon glass, and so on. Sections become physical layers of that world (torn or die-cut edges, real thickness, soft cast shadows), and the texture is visible up close: paper grain, halftone, misregistration, emboss or deboss, foil specular.
-10. **Bolder effects, still usable UI.** Pick 3–4 from: halftone sunburst rays, light leaks, caustics, depth-of-field on foreground elements, motion-blurred falling pieces, washi tape, embossed or foil type, type overlapping the art, warped or stacked kinetic type. The controls (buttons, inputs, calendar) stay crisp and legible on top of it.
+9. **Fully digital, Figma-exported.** The shot is a flat vector screenshot: razor-sharp edges, clean gradients and vector shadows only. No texture, grain, noise, paper, halftone, risograph, film or print effects, ever.
+10. **Typography is the art.** Every section opens with a **custom typographic lockup**, as in poster and brand design: huge display letters mixed with an italic serif, words of different sizes and weights locked together, outlined words, a word on a gentle curve, letters overlapping the illustration, a custom ligature. Always ask for **high-quality text**: sharp, correctly kerned, no warped or melted letters, every character legible, and use quality `xhigh` for text-heavy screens.
 11. **Mobile is designed, not squeezed.** The same color bands, typography and illustrations recomposed for 390px, with a thumb-reachable sticky action and the same interaction patterns (accordions, sheets).
 
 ## 2. Build the pack
@@ -44,13 +44,13 @@ tiny gibberish text; lorem ipsum; misaligned grid; heavy drop shadows; gradient 
 ### 2.3 Default format: GPT Image 2.5 Sunburst (the user's generator)
 Sunburst follows labeled sections best. Every prompt has these blocks, in this order, in plain words (no tags soup):
 - `DELIVERABLE:` the exact output first: what it is (finished website design, Dribbble/Awwwards presentation), canvas (desktop: two tall columns of a 1440px page on a studio backdrop, portrait; mobile: four 390x844 screens, landscape) and "crisp shipped UI that looks like it already exists".
-- `CONCEPT:` the named concept and its material world, in 2–3 sentences.
+- `CONCEPT:` the named concept in 2–3 sentences, led by the typographic idea (the lockups are the art).
 - `SCENE:` the page top to bottom, one numbered line per section: its paper/color band, the essentials, the one open disclosure state, and how its edge hands off to the next section.
-- `TEXT:` every visible string in double quotes, with position and type role, in the user's language; then "No other text anywhere. Check spelling and accents". Spell brand names exactly.
-- `DETAILS:` palette hexes with roles, typography described by character (and the real font names as "like X"), materials and textures, one light direction with shadow color and falloff, depth layers, the chosen effects, how image placeholders look, spacing.
-- `CONSTRAINTS:` no photos of the place (placeholders only), banned fonts and clichés, legibility of small UI text.
-- `PROTECTED ANCHORS:` the 5–7 traits that must survive every edit (palette, material world, hero object, light direction, placeholders, quoted text). Repeat this block in each edit.
-Settings line above the prompt: `model gpt-image-2.5-sunburst · quality high (xhigh for the final) · 1024x1536 to iterate, final 2160x3840 (mobile 3840x2160) · opaque background`. Iterate one change at a time, passing the previous output back with the protected anchors.
+- `TEXT:` open with "typeset in high quality: perfectly sharp, correctly kerned, no warped or melted letters". Then every visible string in double quotes with its position, type role and lockup treatment (outlined, curved, italic, overlapping), in the user's language; then "No other text anywhere. Check spelling and accents". Spell brand names exactly.
+- `DETAILS:` palette hexes with roles, typography described by character (real font names as "like X") and the lockup techniques, flat vector illustration with one light direction, glossy 3D-style icons, how image placeholders look, spacing and radii.
+- `CONSTRAINTS:` fully digital (no texture, grain, paper, halftone or print effects), no photos of the place (placeholders only), banned fonts and clichés, no misspelled or gibberish text.
+- `PROTECTED ANCHORS:` the 5–7 traits that must survive every edit (fully digital, palette, typographic lockups, hero illustration, placeholders, quoted text). Repeat this block in each edit.
+Settings line above the prompt: `model gpt-image-2.5-sunburst · quality xhigh for text-heavy screens · 1024x1536 to iterate, final 2160x3840 (mobile 3840x2160) · opaque background`. Iterate one change at a time, passing the previous output back with the protected anchors.
 The style and negative blocks below are the short form for other generators.
 
 ### 2.4 Screen prompts (other generators)

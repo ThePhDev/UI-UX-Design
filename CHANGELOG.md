@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.5.2 — 2026-09-25
+- Prompt kit: **sai toda a ideia de textura** (papel, grão, retícula, risograph, efeitos de impressão). O print passa a ser 100% digital, exportado do Figma, só com vetor nítido, gradiente limpo e sombra vetorial.
+- **A tipografia é a arte**: cada seção abre com um lockup tipográfico customizado, com tamanhos e pesos misturados, palavras vazadas, palavra em curva, letras sobre a ilustração e ligadura própria.
+- Todo prompt pede **texto em alta qualidade** (nítido, com kerning certo, sem letra derretida) e usa quality `xhigh` nas telas com muito texto.
+
 ## v1.5.1 — 2026-09-25
 - Prompt kit: **conceito artístico com mundo material** (papel risograph, recorte, argila, feltro, resina, letterpress, folha de ouro…), seções como camadas físicas com textura visível e 3–4 efeitos mais ousados (raios em halftone, light leak, cáusticas, desfoque de profundidade, peças caindo com motion blur, tipo em relevo ou foil, tipo sobre a arte), mantendo a UI nítida.
 - **Formato padrão para o GPT Image 2.5 Sunburst**, seguindo o guia oficial da OpenAI: DELIVERABLE / CONCEPT / SCENE / TEXT (todo texto entre aspas) / DETAILS / CONSTRAINTS / PROTECTED ANCHORS, com a linha de configurações (quality high/xhigh, 1024x1536 → 2160x3840) e iteração de uma mudança por vez.
