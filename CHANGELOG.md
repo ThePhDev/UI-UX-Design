@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.5.1 — 2026-09-25
+- Prompt kit: **conceito artístico com mundo material** (papel risograph, recorte, argila, feltro, resina, letterpress, folha de ouro…), seções como camadas físicas com textura visível e 3–4 efeitos mais ousados (raios em halftone, light leak, cáusticas, desfoque de profundidade, peças caindo com motion blur, tipo em relevo ou foil, tipo sobre a arte), mantendo a UI nítida.
+- **Formato padrão para o GPT Image 2.5 Sunburst**, seguindo o guia oficial da OpenAI: DELIVERABLE / CONCEPT / SCENE / TEXT (todo texto entre aspas) / DETAILS / CONSTRAINTS / PROTECTED ANCHORS, com a linha de configurações (quality high/xhigh, 1024x1536 → 2160x3840) e iteração de uma mudança por vez.
+
 ## v1.5.0 — 2026-09-25
 - **Prompt kit reescrito** (`prompt-kit.md`): as telas geradas agora parecem um print final de Figma/Dribbble, e toda foto vira um bloco em branco com legenda do que vai ali (o gerador não inventa mais o lugar). Paleta e tipografia próprias, fugindo do padrão de IA (dafont e fundições criativas primeiro), faixas de cor por seção com a transição descrita, ilustração vetorial com luz e profundidade mais objetos em 3D. Notas para geradores mais criativos (Midjourney v7, Ideogram 3, Recraft v3).
 - **Prompt pack é obrigatório e bloqueante**: pesquisar o negócio, mandar os prompts e esperar a resposta antes de qualquer código, mesmo quando o cliente já tem fotos.

@@ -15,7 +15,9 @@ The screens must read as **a finished Figma frame or a Dribbble/Behance shot**, 
 6. **Minimal surface, deep content.** Each screen shows only the essentials: one headline, a short line and one action. Everything else about the business still exists, but it sits behind interaction: expandable cards, "+" hotspots on an illustration, tabs, accordions, a drawer. The shot shows 1–2 of these in the open state so the builder knows the pattern.
 7. **Generous space.** Wide vertical rhythm between sections (160–240px on desktop), a clear 12-column grid, and a lot of calm area around each focal element.
 8. **Real product fragments.** Buttons, chips, a date picker, a WhatsApp preview bubble and a price or capacity tag, with believable text in the user's language. No lorem ipsum or gibberish.
-9. **Mobile is designed, not squeezed.** The same color bands, typography and illustrations recomposed for 390px, with a thumb-reachable sticky action and the same interaction patterns (accordions, sheets).
+9. **An art concept, not a template.** Name a concept for the brand (e.g. "Verão de primavera: a tactile editorial poster") and a **material world** it is made of: risograph paper, cut paper, clay, felt, resin, letterpress, gold foil, screen print, ceramic, neon glass, and so on. Sections become physical layers of that world (torn or die-cut edges, real thickness, soft cast shadows), and the texture is visible up close: paper grain, halftone, misregistration, emboss or deboss, foil specular.
+10. **Bolder effects, still usable UI.** Pick 3–4 from: halftone sunburst rays, light leaks, caustics, depth-of-field on foreground elements, motion-blurred falling pieces, washi tape, embossed or foil type, type overlapping the art, warped or stacked kinetic type. The controls (buttons, inputs, calendar) stay crisp and legible on top of it.
+11. **Mobile is designed, not squeezed.** The same color bands, typography and illustrations recomposed for 390px, with a thumb-reachable sticky action and the same interaction patterns (accordions, sheets).
 
 ## 2. Build the pack
 Research the business first (site, Instagram, Google, marketplaces) and list the real facts. Then fill these in and show them to the user in 5–7 lines:
@@ -39,7 +41,19 @@ beige + terracotta + sage by default; purple-blue gradients; glassmorphism; gene
 tiny gibberish text; lorem ipsum; misaligned grid; heavy drop shadows; gradient text; eyebrow labels above headings; watermark; tilted device mockups.
 ```
 
-### 2.3 Screen prompts
+### 2.3 Default format: GPT Image 2.5 Sunburst (the user's generator)
+Sunburst follows labeled sections best. Every prompt has these blocks, in this order, in plain words (no tags soup):
+- `DELIVERABLE:` the exact output first: what it is (finished website design, Dribbble/Awwwards presentation), canvas (desktop: two tall columns of a 1440px page on a studio backdrop, portrait; mobile: four 390x844 screens, landscape) and "crisp shipped UI that looks like it already exists".
+- `CONCEPT:` the named concept and its material world, in 2–3 sentences.
+- `SCENE:` the page top to bottom, one numbered line per section: its paper/color band, the essentials, the one open disclosure state, and how its edge hands off to the next section.
+- `TEXT:` every visible string in double quotes, with position and type role, in the user's language; then "No other text anywhere. Check spelling and accents". Spell brand names exactly.
+- `DETAILS:` palette hexes with roles, typography described by character (and the real font names as "like X"), materials and textures, one light direction with shadow color and falloff, depth layers, the chosen effects, how image placeholders look, spacing.
+- `CONSTRAINTS:` no photos of the place (placeholders only), banned fonts and clichés, legibility of small UI text.
+- `PROTECTED ANCHORS:` the 5–7 traits that must survive every edit (palette, material world, hero object, light direction, placeholders, quoted text). Repeat this block in each edit.
+Settings line above the prompt: `model gpt-image-2.5-sunburst · quality high (xhigh for the final) · 1024x1536 to iterate, final 2160x3840 (mobile 3840x2160) · opaque background`. Iterate one change at a time, passing the previous output back with the protected anchors.
+The style and negative blocks below are the short form for other generators.
+
+### 2.4 Screen prompts (other generators)
 One prompt per screen: `{STYLE}` + canvas + section-by-section content with the real copy, the band color of each section and how it transitions to the next + `{NEGATIVE}`.
 
 **Desktop (presentation shot):**
@@ -65,6 +79,7 @@ Same bands, fonts and illustrations as desktop; 44px tap targets; 20px margins.
 ```
 
 ## 3. Per-tool notes (creative generators first)
+- **GPT Image 2.5 Sunburst (default):** use the §2.3 structure. Sunburst for quality and precise edits; Flare only for fast drafts.
 - **Midjourney v7:** best for creative layouts. Put the style block last and add `--ar 2:3 --style raw --stylize 250 --chaos 15`. Use `--sref` with a Dribbble shot you like to lock the style. Text will be approximate, so treat it as layout and mood.
 - **Ideogram 3 / Recraft v3:** best for legible UI text and vector-style art. Recraft: use a "vector illustration" or "digital illustration" style for the art.
 - **GPT Image / ChatGPT:** paste as is, portrait 1024x1536, ask for "legible text, empty image placeholders".
