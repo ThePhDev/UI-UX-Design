@@ -5,7 +5,7 @@
 **O padrão de design do PH para o Claude Code.**
 Qualquer interface, com ou sem referência: medida pixel a pixel, pensada para celular desde o início, com animação caprichada e revisada por um gauntlet de 7 portões antes de chegar em você com link de preview.
 
-`v1.0.0` · Claude Code skill · Python + Playwright
+`v1.1.0` · Claude Code skill · Python + Playwright
 
 </div>
 
@@ -33,6 +33,14 @@ imagem? ──sim──► spec.md ─► clone estático ─► loop de mediç�
                                                                                                ▲   │
                                                                                                └───┘ falhou? corrige e recomeça do portão 1
 ```
+
+### 🧠 Camada de gosto (a tasteskill original do PH)
+A antiga skill `design-taste-frontend` foi recuperada por inteiro em [`taste-reference.md`](taste-reference.md) e continua sempre ativa:
+- **Design Read + 3 dials** antes de construir: `DESIGN_VARIANCE / MOTION_INTENSITY / VISUAL_DENSITY`, com base **8 / 10 / 4**.
+- **Diretriz cinematográfica** para sites: coreografia com GSAP, **cursor SVG animado próprio** e **todo SVG visível animado**.
+- **Design systems oficiais** quando o briefing pede um (Material, Fluent, Carbon, Radix, shadcn, Primer, GOV.UK, USWDS, Polaris, Atlassian, Bootstrap).
+- **Protocolo de redesign** para sites que já existem: auditar antes de mexer e preservar o que importa.
+- **AI tells proibidos**, incluindo a **proibição do travessão (—)**, o conteúdo "Jane Doe" e a prova social falsa.
 
 ### 🔤 Tipografia
 - Identifica a fonte real (WhatTheFont, Matcherator) e procura **primeiro no [dafont](https://www.dafont.com/pt/)**, conferindo a licença. Depois vai para a fundição, o Fontshare ou o Font Squirrel. **Google Fonts só como reserva.**
@@ -65,7 +73,11 @@ imagem? ──sim──► spec.md ─► clone estático ─► loop de mediç�
 | 6 | Texto humano | passou pelo humanizer, sem frases prontas |
 | 7 | Qualidade | contraste AA, foco visível, semântica, teclado, sem rolagem lateral |
 
-Um round só vale se **todos** passarem juntos. Os portões 2, 5 e 7 são julgados por agentes críticos independentes. O limite é de 8 rounds.
+Baseado no [Gauntlet Loop](https://github.com/duolahypercho/gauntlet-loop):
+- **Contrato de aceite** escrito antes do primeiro round.
+- **Construtor e crítico separados.** O crítico vê a referência e o resultado lado a lado, sem saber qual é qual (A/B cego), e cada problema vira um item com severidade e reteste.
+- Um round só vale se **todos** os portões passarem juntos. Os portões 2, 5 e 7 são julgados por agentes críticos independentes.
+- Termina em **PASS**, **UNVERIFIED** ou **NEEDS WORK**. Chega a NEEDS WORK com 8 rounds, ou com 2 rounds seguidos sem melhora. Você é o freio: um "pare" encerra na hora.
 
 ### 🔗 Entrega
 Build → túnel do Cloudflare → você recebe o **link público** e os prints de desktop e mobile, e também o % de igualdade quando tem referência.
@@ -107,7 +119,8 @@ Também usa `humanizer` para os textos e, opcionalmente, `web-design-guidelines`
 ```
 ph-design-skill/
 ├── SKILL.md               # a skill (o que o Claude lê)
-├── gauntlet.md            # os 7 portões
+├── gauntlet.md            # os 7 portões + contrato, papéis e regras de parada
+├── taste-reference.md     # a tasteskill original (dials, diretriz cinematográfica, AI tells, design systems)
 ├── react-bits-catalog.md  # 217 componentes animados, por categoria
 ├── scripts/               # palette · shoot · diff · publish
 ├── CHANGELOG.md
@@ -123,6 +136,8 @@ git reset --hard v1.0.0                     # para voltar de vez
 ```
 
 ## 🙏 Créditos
+- tasteskill (design-taste-frontend): a base de gosto anti-slop do PH
+- [Gauntlet Loop](https://github.com/duolahypercho/gauntlet-loop): o método de construir e criticar em rounds
 - [Emil Kowalski / skills](https://github.com/emilkowalski/skills): a filosofia de motion e de polimento
 - [React Bits](https://github.com/DavidHDev/react-bits): o catálogo de componentes animados
 - [Impeccable](https://github.com/pbakaus/impeccable) e o [frontend-design](https://github.com/anthropics/skills) da Anthropic: direção estética

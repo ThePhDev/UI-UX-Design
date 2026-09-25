@@ -23,7 +23,17 @@ Work in `C:\Users\amigi\ClaudeTelegram\sites\<name>\` (Vite + TS; GSAP for motio
 ## Route
 - **Reference image or screenshot** → Path A.
 - **No reference** → Path B.
-Both paths then share Mobile, Motion, Copy, Gauntlet and Deliver.
+- **Existing site or app to improve** → first run the Redesign Protocol (taste §11: detect the mode, audit before touching, preservation rules), then Path B from the Direction step onward.
+Both paths then share Taste, Mobile, Motion, Copy, Gauntlet and Deliver.
+
+## Taste layer (the user's original tasteskill, always on)
+[taste-reference.md](taste-reference.md) is the user's own anti-slop design skill. Read the named sections when the step comes up; don't load it all at once.
+1. **Design Read + dials before building** (§0–1). Write one line with the design read and set `DESIGN_VARIANCE / MOTION_INTENSITY / VISUAL_DENSITY`. The baseline is **8 / 10 / 4**. Infer variance and density from the brief; motion stays at 10 unless the user or accessibility says otherwise. Record them in `spec.md` or `direction.md`.
+2. **Brief names a design system** (Material, Fluent, Carbon, Radix, shadcn, Primer, GOV.UK, USWDS, Polaris, Atlassian, Bootstrap): use the official packages (§2 and Appendix A). Don't imitate them by hand.
+3. **Cinematic directive for sites, portfolios and marketing pages** (§5.E–5.G): GSAP-led choreography like a motion-design video, a **custom animated SVG cursor** on fine-pointer desktops, and **every visible SVG animated with intent**. A generic entrance repeated everywhere does not count. The Motion budget table below still governs frequently used controls.
+4. **Hard rules during the build:** layout discipline (§4.7), page theme lock and dark mode (§4.11, §8), and performance and accessibility guardrails (§6).
+5. **AI tells are banned** (§9), including the **em-dash ban** (§9.G) in all UI text, "Jane Doe" placeholder content, and fake social proof.
+6. **Final pre-flight** (§14) runs as the checklist inside the gauntlet.
 
 ## Path A — rebuild a reference, pixel by pixel
 Eyeballing gets you ~85%. The last 15% only comes from measuring.
