@@ -3,9 +3,9 @@
 # 🎨 PH_Design_Skill
 
 **O padrão de design do PH para o Claude Code.**
-Qualquer interface, com ou sem referência: medida pixel a pixel, pensada para celular desde o início, com animação caprichada e revisada por um gauntlet de 7 portões antes de chegar em você com link de preview.
+Qualquer interface, com ou sem referência: medida pixel a pixel, pensada para celular desde o início, com animação caprichada e revisada por um gauntlet de 8 portões, que termina num júri no estilo Awwwards, antes de chegar em você com link de preview.
 
-`v1.1.0` · Claude Code skill · Python + Playwright
+`v1.2.0` · Claude Code skill · Python + Playwright
 
 </div>
 
@@ -62,21 +62,38 @@ A antiga skill `design-taste-frontend` foi recuperada por inteiro em [`taste-ref
 - Consulta primeiro o **catálogo React Bits** com 217 componentes animados ([`react-bits-catalog.md`](react-bits-catalog.md)). Também adapta para sites sem React.
 - Anima só transform, opacity e filter. Respeita `prefers-reduced-motion` e termina com `review-animations`.
 
-### 🥊 Gauntlet de 7 portões ([`gauntlet.md`](gauntlet.md))
+### 🧩 Modo e piso de artesanato (técnicas do [Impeccable](https://github.com/pbakaus/impeccable))
+- **4 modos por tela**:
+  - **Persuadir** (landing, marketing) e **Experiência** (portfólio): motion cinematográfico.
+  - **Ler** (docs, estudo) e **Operar** (apps, dashboards): clareza primeiro, e a marca vive nos detalhes.
+- **Piso de artesanato** lido antes de qualquer edição de interface:
+  - *Verificar*: contraste, profundidade, espaçamento, medida do texto, estados e **superfícies do navegador tematizadas** (seleção, cursor de texto, barra de rolagem, anel de foco).
+  - *Recusar*: rótulo acima do título, texto em gradiente, cards iguais de ícone + título, vidro decorativo, emoji como ícone, grade falsa de fundo.
+- **Detector automático** (`impeccable detect`): acha anti-padrões de IA e de qualidade com arquivo e linha.
+
+### 🥊 Gauntlet de 8 portões ([`gauntlet.md`](gauntlet.md))
 | # | Portão | Passa quando |
 |---|---|---|
-| 1 | Fidelidade | diff ≥ 97 %, deslocamento vertical ≤ 8px, nenhuma célula > 10 % |
+| 1 | Fidelidade | diff ≥ 97 %, deslocamento vertical ≤ 8px, nenhuma célula > 10 % (sem referência: segue a direção e os dials) |
 | 2 | Detalhes pixel a pixel | crítico compara zooms 2x: peso da fonte, raios, bordas, sombras, ícones |
 | 3 | Responsivo | `shoot.py` em 5 tamanhos sem nenhum problema |
-| 4 | Motion | `review-animations` aprova, dentro do orçamento, sem layout shift |
-| 5 | Design humano | nenhum sinal de template de IA |
-| 6 | Texto humano | passou pelo humanizer, sem frases prontas |
-| 7 | Qualidade | contraste AA, foco visível, semântica, teclado, sem rolagem lateral |
+| 4 | Motion | `review-animations` aprova; GSAP + cursor SVG + todo SVG animado, conferido rodando de verdade |
+| 5 | Design humano | `impeccable detect` limpo + crítico sem nenhum sinal de template de IA |
+| 6 | Texto humano | passou pelo humanizer, sem travessão e sem frases prontas |
+| 7 | Qualidade | `vitals.py` ok (LCP ≤ 2,5s / 3s no celular, CLS ≤ 0,1, TBT ≤ 300ms), acessibilidade, Nielsen ≥ 32/40 |
+| 8 | **Júri Awwwards** | 5 jurados independentes; nota ponderada **≥ 8,0** (nível Site of the Day) e nenhum critério abaixo de 7 |
+
+#### 🏆 O júri (portão 8)
+Imita a avaliação real do [Awwwards](https://www.awwwards.com/about-evaluation/): **Design 40 % · Usabilidade 30 % · Criatividade 20 % · Conteúdo 10 %**, com notas de 1 a 10.
+- São 5 jurados com olhares diferentes: designer visual, especialista em UX, diretor criativo, estrategista de conteúdo e dev front-end. Eles veem só o site, como um visitante veria.
+- Em cada critério, o voto mais distante da média é descartado, como o Awwwards faz.
+- Cada jurado justifica cada nota e diz a única mudança que mais subiria a pior nota dele. Isso vira correção no round seguinte.
+- A menção honrosa começa em 6,5. A PH_Design_Skill só entrega a partir de **8,0**.
 
 Baseado no [Gauntlet Loop](https://github.com/duolahypercho/gauntlet-loop):
 - **Contrato de aceite** escrito antes do primeiro round.
 - **Construtor e crítico separados.** O crítico vê a referência e o resultado lado a lado, sem saber qual é qual (A/B cego), e cada problema vira um item com severidade e reteste.
-- Um round só vale se **todos** os portões passarem juntos. Os portões 2, 5 e 7 são julgados por agentes críticos independentes.
+- Um round só vale se **todos** os portões passarem juntos. Os portões 2, 5 e 7 são julgados por agentes críticos independentes, e o 8 pelo júri.
 - Termina em **PASS**, **UNVERIFIED** ou **NEEDS WORK**. Chega a NEEDS WORK com 8 rounds, ou com 2 rounds seguidos sem melhora. Você é o freio: um "pare" encerra na hora.
 
 ### 🔗 Entrega
@@ -90,6 +107,8 @@ Build → túnel do Cloudflare → você recebe o **link público** e os prints 
 | `scripts/shoot.py` | Prints estáveis (espera as animações e o GSAP terminarem) em qualquer tamanho, mais a auditoria de responsividade |
 | `scripts/diff.py` | Porcentagem de igualdade, deslocamento de altura, piores regiões, mapa de calor e comparação lado a lado |
 | `scripts/publish.py` | Publica uma pasta ou porta num link `trycloudflare.com` e confere se o link responde |
+| `scripts/vitals.py` | Desempenho medido: LCP, CLS, TBT, tempo de carga e peso, no desktop e num celular lento (CPU 4x, 4G) |
+| `impeccable detect` | Detector de anti-padrões do Impeccable (vem com a skill impeccable) |
 
 ```bash
 python scripts/palette.py ref.png --at 120,40 --crop 0,0,600,300 zoom.png
@@ -119,7 +138,7 @@ Também usa `humanizer` para os textos e, opcionalmente, `web-design-guidelines`
 ```
 ph-design-skill/
 ├── SKILL.md               # a skill (o que o Claude lê)
-├── gauntlet.md            # os 7 portões + contrato, papéis e regras de parada
+├── gauntlet.md            # os 8 portões + júri Awwwards + contrato, papéis e regras de parada
 ├── taste-reference.md     # a tasteskill original (dials, diretriz cinematográfica, AI tells, design systems)
 ├── react-bits-catalog.md  # 217 componentes animados, por categoria
 ├── scripts/               # palette · shoot · diff · publish

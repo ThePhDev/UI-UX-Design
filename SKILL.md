@@ -17,6 +17,8 @@ This is the user's house style for anything with a UI, with or without a referen
 | `shoot.py URL OUTDIR --viewports desktop,laptop,tablet,mobile,small,1920x1080 [--full] [--no-scroll]` | settled screenshots + responsive audit (`report.json`, exit 1 on issues). Named: desktop 1440, laptop 1280, tablet 768, mobile 390, small 360; any `WxH` works |
 | `diff.py REF SHOT OUT [--exclude X0,Y0,X1,Y1 ...]` | match %, height drift, worst grid cells, heatmap + side-by-side |
 | `publish.py DIST_DIR_or_PORT` / `publish.py stop` | Cloudflare quick tunnel, prints verified public URL |
+| `vitals.py URL` | lab LCP, CLS, TBT, load time and weight on a fast desktop and a throttled phone (4x CPU, 4G); exit 1 when targets are missed |
+| `impeccable detect --json <src>` (`~/.claude/skills/impeccable/scripts/impeccable.cmd` on Windows) | Impeccable's static anti-pattern detector: AI-slop signatures and quality problems, with file and line |
 
 Work in `C:\Users\amigi\ClaudeTelegram\sites\<name>\` (Vite + TS; GSAP for motion). Keep `ref/` (reference, if any) and `qa/` (spec, shots, diffs, gauntlet log).
 
@@ -25,6 +27,18 @@ Work in `C:\Users\amigi\ClaudeTelegram\sites\<name>\` (Vite + TS; GSAP for motio
 - **No reference** → Path B.
 - **Existing site or app to improve** → first run the Redesign Protocol (taste §11: detect the mode, audit before touching, preservation rules), then Path B from the Direction step onward.
 Both paths then share Taste, Mobile, Motion, Copy, Gauntlet and Deliver.
+
+## Mode and craft floor (from Impeccable, always on)
+- **Pick the mode per surface** (not per product) and write it in `spec.md` or `direction.md`:
+  - **Persuade:** landing pages, marketing, pricing.
+  - **Experience:** portfolios, showcases.
+  - **Read:** docs, articles, study material.
+  - **Operate:** apps, dashboards, tools.
+  The mode sets the motion budget: Persuade and Experience get the cinematic directive; Operate and Read put scanability and consistency first, with brand in the precise details.
+- **Before the first UI edit**, read `~/.claude/skills/impeccable/reference/craft-floor.md` and build to it.
+  - *Verify* list: contrast, depth, spacing, type measure and tracking, one authored motion moment instead of identical entrances, all states, **themed browser surfaces** (selection, caret, scrollbars, focus rings, underline offset, tabular numerals) and copy.
+  - *Refuse* list: eyebrow/kicker labels above headings, gradient text, same-size icon cards as the page structure, hero-metric template, decorative glass, colored side borders, costume monospace, emoji icons, fake grid backgrounds.
+- **The brief wins:** pinned fonts, palettes and eras beat any default here. Refining keeps the current identity; a redesign replaces it completely, so never polish the look you're discarding.
 
 ## Taste layer (the user's original tasteskill, always on)
 [taste-reference.md](taste-reference.md) is the user's own anti-slop design skill. Read the named sections when the step comes up; don't load it all at once.
