@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.3.0 — 2026-09-25
+- **Gerador de prompts** (`prompt-kit.md`): em projetos sem referência, a skill entrega primeiro um conceito em 5 linhas e os prompts para gerar as telas de desktop, mobile e app no estilo minimalista criativo feito por humanos. O usuário gera as imagens e a skill clona (Path A), ou manda construir direto.
+- **DNA de estilo** tirado de 7 referências estudadas (Wandor, Mugic, ShipSphere, FNJ, Finley, Odella, Oriel), salvas em `references/creative-minimal/` para servir de referência de estilo nos geradores de imagem.
+
 ## v1.2.0 — 2026-09-25
 - **Júri Awwwards (portão 8):** 5 jurados independentes, com Design 40 % / Usabilidade 30 % / Criatividade 20 % / Conteúdo 10 % e o voto mais distante da média descartado em cada critério. Passa com ≥ 8,0 (nível SOTD) e nenhum critério abaixo de 7.
 - **`vitals.py`:** LCP, CLS, TBT, tempo de carga e peso, no desktop e num celular com a CPU e a rede limitadas. Entrou no portão 7.

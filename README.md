@@ -5,7 +5,7 @@
 **O padrão de design do PH para o Claude Code.**
 Qualquer interface, com ou sem referência: medida pixel a pixel, pensada para celular desde o início, com animação caprichada e revisada por um gauntlet de 8 portões, que termina num júri no estilo Awwwards, antes de chegar em você com link de preview.
 
-`v1.2.0` · Claude Code skill · Python + Playwright
+`v1.3.0` · Claude Code skill · Python + Playwright
 
 </div>
 
@@ -33,6 +33,13 @@ imagem? ──sim──► spec.md ─► clone estático ─► loop de mediç�
                                                                                                ▲   │
                                                                                                └───┘ falhou? corrige e recomeça do portão 1
 ```
+
+### 🖼️ Gerador de prompts (quando não há referência)
+Pediu um site ou app sem imagem? A skill começa entregando um **pacote de prompts** ([`prompt-kit.md`](prompt-kit.md)) no estilo **minimalista criativo, feito por humanos**, extraído de 7 referências estudadas ([`references/creative-minimal/`](references/creative-minimal)): Wandor, Mugic, ShipSphere, FNJ, Finley, Odella e Oriel.
+- **Conceito em 5 linhas:** marca, modo, cor, metáfora do herói e sistema de ilustração.
+- **Prompts** da landing completa no desktop, das telas de celular e das telas de app, todos com o mesmo bloco de estilo e o mesmo bloco negativo.
+- **Dicas por ferramenta:** GPT Image, Nano Banana, Midjourney, Figma Make/Stitch.
+- Depois você escolhe: **gera as imagens** e manda de volta (a skill clona pixel a pixel) **ou** responde "build" e ela constrói direto a partir do pacote.
 
 ### 🧠 Camada de gosto (a tasteskill original do PH)
 A antiga skill `design-taste-frontend` foi recuperada por inteiro em [`taste-reference.md`](taste-reference.md) e continua sempre ativa:
@@ -140,6 +147,8 @@ ph-design-skill/
 ├── SKILL.md               # a skill (o que o Claude lê)
 ├── gauntlet.md            # os 8 portões + júri Awwwards + contrato, papéis e regras de parada
 ├── taste-reference.md     # a tasteskill original (dials, diretriz cinematográfica, AI tells, design systems)
+├── prompt-kit.md          # DNA de estilo + prompts de telas desktop/mobile/app
+├── references/creative-minimal/  # as 7 referências de estilo
 ├── react-bits-catalog.md  # 217 componentes animados, por categoria
 ├── scripts/               # palette · shoot · diff · publish
 ├── CHANGELOG.md

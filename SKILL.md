@@ -59,6 +59,7 @@ Eyeballing gets you ~85%. The last 15% only comes from measuring.
 5. Continue with Mobile → Motion (the final frame must re-pass step 4) → Copy (text copied verbatim from the reference stays as-is) → Gauntlet → Deliver.
 
 ## Path B — design from scratch
+0. **Prompt pack first (always, for sites and apps).** Follow [prompt-kit.md](prompt-kit.md). Deliver the 5-line concept and the image-generation prompts for the desktop and mobile screens in the user's "creative minimalist, human-made" style (Style DNA from `references/creative-minimal/`). Then let the user choose: they generate the images and send them back → **Path A** on those images; or they reply "build" → continue below, using the pack as the direction. Skip this step only for small tweaks to an existing UI.
 1. **Direction.** Before coding, write 5 lines in `qa/direction.md`: audience, mood (3 adjectives), palette (hex), type pairing, and one signature idea (the thing people remember). Use `frontend-design` and `impeccable` to pick a direction that isn't templated. Offer 2-3 directions only when the user asks to compare; `prototype` renders them side by side.
 2. Build desktop and mobile together (see Mobile). Then Motion → Copy → Gauntlet (gate 1 = "matches direction.md"; gate 2 = a critic zooming on spacing rhythm, alignment, radii, shadows and icon weight) → Deliver.
 
