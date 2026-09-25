@@ -59,7 +59,7 @@ Eyeballing gets you ~85%. The last 15% only comes from measuring.
 5. Continue with Mobile → Motion (the final frame must re-pass step 4) → Copy (text copied verbatim from the reference stays as-is) → Gauntlet → Deliver.
 
 ## Path B — design from scratch
-0. **Prompt pack first (always, for sites and apps).** Follow [prompt-kit.md](prompt-kit.md). Deliver the 5-line concept and the image-generation prompts for the desktop and mobile screens in the user's "creative minimalist, human-made" style (Style DNA from `references/creative-minimal/`). Then let the user choose: they generate the images and send them back → **Path A** on those images; or they reply "build" → continue below, using the pack as the direction. Skip this step only for small tweaks to an existing UI.
+0. **Prompt pack first (always, for sites and apps, no exceptions).** Research the business, then follow [prompt-kit.md](prompt-kit.md): the concept plus the desktop and mobile prompts that generate **Figma/Dribbble-grade screens with labeled image placeholders instead of photos**, an owned palette and typography, color bands per section and vector/3D illustration with depth. **Send it and stop until the user answers.** They generate the images and send them back → **Path A** on those images (placeholders become the client's real photos); or they reply "build" → continue below, using the pack as the direction. Having real client photos is no reason to skip it. Skip it only for small tweaks to an existing UI.
 1. **Direction.** Before coding, write 5 lines in `qa/direction.md`: audience, mood (3 adjectives), palette (hex), type pairing, and one signature idea (the thing people remember). Use `frontend-design` and `impeccable` to pick a direction that isn't templated. Offer 2-3 directions only when the user asks to compare; `prototype` renders them side by side.
 2. Build desktop and mobile together (see Mobile). Then Motion → Copy → Gauntlet (gate 1 = "matches direction.md"; gate 2 = a critic zooming on spacing rhythm, alignment, radii, shadows and icon weight) → Deliver.
 
@@ -68,6 +68,17 @@ Eyeballing gets you ~85%. The last 15% only comes from measuring.
 
 ## Mobile (both paths, always)
 **Mobile gets full care every time, even when the reference only shows a desktop.** Plan the 390px version in `qa/spec.md` or `direction.md` before coding: header, navigation, hero, grids, cards, forms and footer. Keep the same identity, illustrations, type hierarchy and spacing rhythm, and never just shrink or stack. Everything must look regular and tidy: consistent gutters, aligned edges, even spacing, centered where it makes sense, otherwise clearly on a grid. For apps and PWAs apply `mobile-native`: safe areas, `100dvh`, no tap flash or sticky hover, inputs ≥16px. Verify with `shoot.py --viewports tablet,mobile,small --full`: fix every report issue and look at each screenshot.
+
+## Content, space and section flow (both paths)
+- **All the business, little on screen.** Research everything true about the business (services, spaces, capacity, prices if public, hours, address, policies, FAQs, reviews) and give every fact a home. The visible surface stays minimal: a headline, one line and one action per section. The rest lives behind interaction: "+" hotspots on the illustration, expandable cards, tabs, accordions, drawers and sheets that open with animation (height via `grid-template-rows`, content with blur/opacity, focus moved inside, Escape closes). Nothing essential may exist only behind hover.
+- **Space.** Sections breathe: 160–240px between them on desktop and 96–128px on phones, with more space above a heading than below it. One focal element per viewport.
+- **Color flow.** Each section has its own color band from the palette, and the band changes as you scroll: the background color is interpolated by a ScrollTrigger between neighbors, or the edge between two bands is a wipe, curve or clip-path reveal. Text and UI colors swap with the band so contrast stays AA. The transition is part of the choreography, not a hard cut.
+
+## Illustration and SVG standard (both paths)
+- SVGs are **illustrations, not icons blown up**: several layers, a single light direction, gradients for volume, soft shadow shapes, highlights and rim light, and depth through overlap, scale and atmospheric tint (far = lighter, bluer). Build them with `<linearGradient>`/`<radialGradient>`, `<filter>` for soft shadows only when cheap, and grouped layers (`sky`, `far`, `mid`, `near`, `light`).
+- **Some elements in 3D**: three.js (low-poly, flat-shaded or toon, same palette and light) or CSS 3D/isometric layers, lazy-loaded and paused off screen.
+- **Continuous loops like a GIF**: every illustration has at least one seamless idle loop (leaves swaying, water rippling, sun rays turning, clouds drifting, a 3D object rotating or bobbing). Loops use `repeat: -1` with matching first and last frames (or yoyo), run on transform/opacity, pause when off screen or the tab is hidden, and stop under `prefers-reduced-motion` (show the rest pose).
+- Detail goes where the eye lands: the hero and the signature illustration get the richest layers; secondary icons stay one consistent line system.
 
 ## Motion (both paths)
 The user likes a lot of motion: GSAP, scroll-driven sections, custom cursors, 3D. Emil's rule decides **where** it goes:
@@ -91,6 +102,10 @@ The user likes a lot of motion: GSAP, scroll-driven sections, custom cursors, 3D
 | Mistake | Fix |
 |---|---|
 | UI code before `spec.md` / `direction.md` exists | Write it first |
+| Skipping the prompt pack because the client has photos, or building before the user answers | Always send the pack and wait |
+| Prompts that ask the generator for photos of the place | Labeled image placeholders only; real photos come from the client |
+| Every fact dumped on the page | Minimal surface, details behind accordions, hotspots and sheets |
+| Flat single-color SVGs, frozen after the entrance | Layers, light, depth, some 3D, and a seamless idle loop |
 | Declaring "pixel perfect" from memory of the image | Only `diff.py` numbers count |
 | Fixing random spots | Always fix the worst cell first; re-diff after each batch |
 | Diffing mid-animation | Shots come from `shoot.py` (it settles and finishes animations) |

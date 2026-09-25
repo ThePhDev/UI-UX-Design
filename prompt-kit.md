@@ -1,115 +1,87 @@
-# Prompt Kit: Creative Minimal (no-reference projects)
+# Prompt Kit: Figma-shot screens (no-reference projects)
 
-When the user asks for a site or app **without a reference image**, deliver a **prompt pack** that generates the reference screens (desktop + mobile) in the user's chosen style. The user then picks one of two options:
-- **A) Generate the images** in an image model, send them back, and the build continues on **Path A** (pixel-by-pixel from the generated screens).
-- **B) Build without generating.** The prompt pack becomes the spec: its style block, sections and copy are written into `direction.md`, and the build follows Path B.
+When the user asks for a site or app **without a reference image**, deliver a **prompt pack** that generates the reference screens (desktop + mobile) **before any code**. Never skip it, even when the client already has real photos: the user considers these prompts essential. Wait for the user to choose:
+- **A) Generate the images** and send them back → the build continues on **Path A** (pixel by pixel from the generated screens).
+- **B) "build"** → the pack becomes the spec: its style block, sections and copy go into `direction.md` and the build follows Path B.
 
-The style comes from 7 studied references in `references/creative-minimal/`: Wandor, Mugic, ShipSphere, FNJ, Finley, Odella and Oriel. When the image tool accepts image inputs, attach 1–2 of them as **style references** (not content).
+The screens must read as **a finished Figma frame or a Dribbble/Behance shot**, a designer's definitive UI print, and never as a photo mockup of the place.
 
-## 1. Style DNA ("creative minimalist, human-made")
-What makes these read as designed by a person:
-1. **Airy light canvas.** White or warm off-white (#FAF8F5, #F7F7F5) sections, generous whitespace, content max ~1200px, and one confident brand hue plus 3–4 soft pastel tints (peach, mint, lavender, pink, sky).
-2. **Headline voice.** A large geometric or grotesk sans (Outfit, General Sans, Satoshi or Inter Display character), weight 500–600, tight tracking (-0.02 to -0.03em), deep ink color (navy, forest or near-black) instead of pure black. **One twist per headline**: an italic serif phrase ("finally understood."), a second line in muted gray ("Oriel does the rest."), or one or two words in the brand color.
-3. **One signature hero metaphor** that could only belong to this brand. The references do it this way:
-   - Wandor: a sticker-collage panorama of world landmarks with a wavy cut-out edge.
-   - Mugic: the product as a physical object (a lavender device with a dot-matrix speaker).
-   - ShipSphere: an isometric pastel supply-chain loop.
-   - FNJ: a pixel-mosaic block holding the input.
-   - Finley: a phone in a hand over a green gradient.
-   - Oriel: a sky with clouds and floating UI cards around a phone.
-4. **Real product fragments.** Small floating UI cards with believable data (exact figures, +8.4% chips, dates, names), mini dashboards inside feature cards, and a product screenshot framed by something ownable (a flower wreath, a soft-tinted stage).
-5. **One illustration system per brand.** Same stroke, shading and palette everywhere, from hero to feature icons to footer. Flat pastel isometric, sticker collage, and soft line-plus-fill are the three seen.
-6. **Section rhythm.** A centered hero, then sections alternating "title left / short paragraph right" headers, a **bento grid** of soft-tinted panels (1px hairline borders, 12–16px radii, no heavy shadows), a stats row with 3–4 large numbers, a colored testimonial card marquee, 2–3 column pricing with the middle plan filled in the brand color, an FAQ accordion, a final CTA band, and a footer with 3–4 link columns.
-7. **Human touches.** Playful physical metaphors (a notebook spiral binding between step cards, an airplane window, a cable hanging from the pricing card), tiny inline illustrations inside sentences, and a **giant brand wordmark** closing the footer (colorful letter-shapes, a fading gradient, or a landmark collage).
-8. **Controls.** Small pill buttons: a filled deep-color primary and a ghost or outline secondary. A small announcement pill ("New · …") is allowed only as a clickable link chip, never as a decorative eyebrow label.
-9. **Mobile is designed, not squeezed.** The same hero metaphor recomposed vertically, bento panels stacked full-width, a sticky compact nav with a menu sheet, stats as a 2×2 grid, a swipeable testimonial row, and pricing cards stacked with the popular plan first.
+## 1. Style DNA ("creative, designed by a person")
+1. **No photorealism of the business.** Every photo slot is an **image placeholder**: a flat tinted block with a thin outline, a small image icon and a caption saying what goes there ("FOTO: pergolado com primavera, horizontal 4:3"). The generator must not invent the place, people, food or products. Real photos come from the client later.
+2. **Brave, owned color.** Build a palette from the business's world, not the AI default (no beige + terracotta + sage by habit, no purple-blue gradients). Pick one dominant hue, one surprising accent and a dark anchor. Name each hex and its role (background, surface, text, accent, section band).
+3. **Color that travels.** Each section sits on its own color band from the palette. The page is a sequence of color fields, and the prompt describes how one field hands off to the next: a diagonal wipe, a curved edge, an overlapping card that straddles the two colors, or a gradient seam.
+4. **Typography with character.** Never the usual AI stack (Inter, Poppins, Montserrat, Playfair, "a geometric sans"). Choose a display face with personality from dafont.com first (check the license), then from foundries like Fontshare, Pangram Pangram, Velvetyne, Collletttivo or ATF. Examples: condensed grotesk, wide expanded sans, stencil, chunky soft serif, variable display with ink traps. Pair it with a quiet text face. Use big scale contrast (display 120–200px desktop), mixed weights inside one headline and tight tracking. Name the fonts in the prompt.
+5. **Illustration system with depth.** Instead of photos, the art is **detailed vector illustration**: layered shapes with light direction, soft shadows, highlights and gradients for volume, and a few **3D objects** (isometric or soft 3D render style) that belong to the business. The same light direction and palette appear everywhere. They are drawn to be animated as seamless loops later.
+6. **Minimal surface, deep content.** Each screen shows only the essentials: one headline, a short line and one action. Everything else about the business still exists, but it sits behind interaction: expandable cards, "+" hotspots on an illustration, tabs, accordions, a drawer. The shot shows 1–2 of these in the open state so the builder knows the pattern.
+7. **Generous space.** Wide vertical rhythm between sections (160–240px on desktop), a clear 12-column grid, and a lot of calm area around each focal element.
+8. **Real product fragments.** Buttons, chips, a date picker, a WhatsApp preview bubble and a price or capacity tag, with believable text in the user's language. No lorem ipsum or gibberish.
+9. **Mobile is designed, not squeezed.** The same color bands, typography and illustrations recomposed for 390px, with a thumb-reachable sticky action and the same interaction patterns (accordions, sheets).
 
 ## 2. Build the pack
-Fill these from the brief before writing prompts, and show them to the user in 5 lines:
-`BRAND` (name + one-line product truth) · `MODE` (Persuade/Experience/Read/Operate) · `HUE` (brand color hex + pastel tints) · `METAPHOR` (the ownable hero idea) · `ILLUSTRATION` (one system) · `TYPE` (display + body families) · `SCREENS` (list).
-Invent a metaphor that is **specific to the product's world**; never reuse one of the 7 references literally.
+Research the business first (site, Instagram, Google, marketplaces) and list the real facts. Then fill these in and show them to the user in 5–7 lines:
+`BRAND` (name + one-line truth) · `MODE` · `PALETTE` (hex + role each) · `TYPE` (display + text, with source) · `ILLUSTRATION` (the vector/3D system and its light) · `SIGNATURE` (the one idea only this business could have) · `DISCLOSURE` (what hides behind which interaction) · `SCREENS`.
 
 ### 2.1 Style block (paste into every prompt, unchanged)
 ```
-Style: creative minimalist product website, human-made craft, Dribbble/Behance shot quality.
-Light airy canvas (#FAF8F5 / white), generous whitespace, 12-column grid, max content width 1200px.
-Brand color {HUE} used sparingly, with soft pastel tints {TINTS} for panels.
-Headlines in a geometric sans ({DISPLAY}), weight 500-600, tight tracking, deep ink color {INK};
-one headline twist: {TWIST}. Body in {BODY}, small and quiet, muted gray.
-Illustration system: {ILLUSTRATION}, identical style everywhere.
-Soft-tinted bento panels with 1px hairline borders and 14px radius, no heavy drop shadows.
-Small pill buttons (filled {INK or HUE} primary, outline secondary). Crisp realistic UI fragments with believable data.
-Pixel-perfect alignment, consistent spacing rhythm (8px scale), readable real English/Portuguese copy, no lorem ipsum.
+Style: finished Figma UI frame / Dribbble shot of a real website, crisp flat UI, designed by a senior human designer, not a photo mockup.
+All photo areas are EMPTY IMAGE PLACEHOLDERS: flat {PLACEHOLDER_TINT} blocks with a 1px outline, a small image icon and a short label describing the photo that will go there. Do not render any photograph.
+Palette: {PALETTE with roles}. Each section is a full-width color band; transitions between bands are {TRANSITION}.
+Typography: display "{DISPLAY}" huge (120-200px), mixed weights, tight tracking; text "{TEXT}" small and calm. Clear hierarchy, strong scale contrast.
+Illustrations: detailed vector art with one light source from {LIGHT}, soft shadows, highlights, gradients for volume and depth, plus a few soft-3D objects: {OBJECTS}. Same style everywhere.
+Minimal layout with deep content: only essentials visible, extra info behind "+" hotspots, expandable cards and accordions (show one opened).
+Generous spacing (160-240px between sections), 12-column grid, pixel-perfect alignment, readable real {LANGUAGE} copy.
 ```
 
 ### 2.2 Negative block (append to every prompt)
 ```
-Avoid: generic SaaS template, purple-blue gradient blobs, glassmorphism, neon, dark mode, stock photos of people at laptops,
-3D clay characters, emoji icons, random decorative shapes, cluttered layout, tiny unreadable gibberish text, misaligned grids,
-heavy shadows, gradient text, eyebrow labels above headings, fake logos with typos, watermark, device mockup tilted at extreme angles.
+Avoid: photorealistic photos of the place, people, food or rooms; stock photography; AI-default fonts (Inter, Poppins, Montserrat, Playfair);
+beige + terracotta + sage by default; purple-blue gradients; glassmorphism; generic SaaS template; identical icon cards; emoji icons;
+tiny gibberish text; lorem ipsum; misaligned grid; heavy drop shadows; gradient text; eyebrow labels above headings; watermark; tilted device mockups.
 ```
 
 ### 2.3 Screen prompts
-Write **one prompt per screen**. Every prompt has: `{STYLE}` + canvas + section-by-section content (with the real copy) + `{NEGATIVE}`.
+One prompt per screen: `{STYLE}` + canvas + section-by-section content with the real copy, the band color of each section and how it transitions to the next + `{NEGATIVE}`.
 
-**Desktop, full landing page (presentation shot):**
+**Desktop (presentation shot):**
 ```
 {STYLE}
-Canvas: 1440px-wide full-length landing page for {BRAND}, shown as a tall Dribbble presentation:
-two long page columns side by side on a light gray (#ECECEC) backdrop, page corners rounded 16px.
-Sections top to bottom:
-1. Nav: wordmark "{BRAND}" left, 3-4 links center, "{CTA}" pill right.
-2. Hero: centered headline "{HEADLINE}" ({TWIST}), one-line subhead, primary + secondary pill; signature visual: {METAPHOR}.
-3. Social proof: a row of 5-6 muted monochrome partner logos.
-4. Section header left "{SECTION_TITLE}" / short paragraph right; bento grid of {N} soft-tinted panels, each with a small real UI fragment: {FRAGMENTS}.
-5. Stats row: {STAT_1}, {STAT_2}, {STAT_3}, {STAT_4} as large numbers with tiny captions on pastel-topped tiles.
-6. Testimonials: horizontal row of colored cards (peach, mint, lavender, pink) with quote, name, role.
-7. Pricing: {PLANS}; middle plan filled with brand color and a "Popular" pill.
-8. FAQ: title left, accordion right with 5 questions, first one open.
-9. Final CTA band with {METAPHOR_ECHO}.
-10. Footer: 4 link columns, social icons, then a giant "{BRAND}" wordmark {WORDMARK_TREATMENT}.
+Canvas: 1440px-wide full landing page for {BRAND} shown as a Dribbble presentation: two long page columns side by side on a neutral backdrop.
+Sections top to bottom (band color → transition → next):
+1. Nav on {COLOR}: wordmark, 4-5 links, one action pill.
+2. Hero on {COLOR}: huge headline "{HEADLINE}", one short line, one primary pill; signature illustration {SIGNATURE} (vector + soft 3D, lit from {LIGHT}); one image placeholder labeled "{PHOTO_1}". Transition: {TRANSITION_1}.
+3..N. {SECTION}: {essentials only}; {what is behind the interaction, one item shown open}; placeholders labeled {PHOTOS}. Transition: {TRANSITION_N}.
+N+1. Booking/contact block with the real controls (date picker, chips, WhatsApp preview bubble).
+N+2. Footer on {DARK}: 4 small columns with real contact data, giant wordmark in the display font.
 {NEGATIVE}
 ```
 
-**Mobile, key screens (one image, 3–4 phones):**
+**Mobile (3–4 screens in one image):**
 ```
 {STYLE}
-Canvas: 3 to 4 iPhone-size screens (390x844) of the {BRAND} {site|app}, laid flat side by side on a light gray backdrop, no device frames, 32px rounded screen corners.
-Screen 1 - Hero: compact nav with wordmark + menu icon, headline "{HEADLINE}" stacked in 3 short lines, subhead, full-width pill CTA, {METAPHOR} recomposed vertically.
-Screen 2 - Features: bento panels stacked full-width, each with one real UI fragment.
-Screen 3 - Stats 2x2 + swipeable testimonial card row with pagination dots.
-Screen 4 - Pricing stacked, popular plan first, FAQ accordion, footer with giant wordmark.
-Thumb-friendly 44px tap targets, 20px side margins, same typography and colors as desktop.
+Canvas: 4 iPhone screens (390x844) of the {BRAND} site side by side, flat, no device frames, 32px corners.
+Screen 1 hero · Screen 2 signature interaction open (hotspot/accordion) · Screen 3 {content} · Screen 4 booking with sticky action.
+Same bands, fonts and illustrations as desktop; 44px tap targets; 20px margins.
 {NEGATIVE}
 ```
 
-**App (Operate mode), one prompt per flow:**
-```
-{STYLE}
-Canvas: {N} mobile app screens (390x844) for {BRAND}, side by side, flat, no device frames.
-{SCREEN_1}: {purpose}, top app bar "{title}", {content blocks with real data}, bottom tab bar with {4-5 tabs}.
-{SCREEN_2}: ...
-Calm, scannable, brand color only on primary actions and active states; illustrations only in empty states and onboarding.
-{NEGATIVE}
-```
-Add a desktop dashboard prompt when the app also has a web version (sidebar + header greeting + 3 metric cards + main chart + activity list + one "suggested next step" card).
-
-## 3. Per-tool notes
-- **GPT Image / ChatGPT:** paste the prompt as is, size 1024x1536 (portrait) for full pages. Ask for "legible text"; regenerate only the screens that fail.
-- **Nano Banana (Gemini image):** attach 1–2 reference JPGs from `references/creative-minimal/` as style references. It keeps consistency across edits, so generate desktop first, then ask "same brand, now the mobile screens".
-- **Midjourney v7:** put the style block last and add `--ar 2:3 --style raw --stylize 150`. Use `--sref` with a reference image URL for style lock. The text will be approximate, so treat the output as layout and mood.
-- **Figma Make / Google Stitch / v0:** paste the section list as the brief. They output editable screens, which are ideal for option A.
+## 3. Per-tool notes (creative generators first)
+- **Midjourney v7:** best for creative layouts. Put the style block last and add `--ar 2:3 --style raw --stylize 250 --chaos 15`. Use `--sref` with a Dribbble shot you like to lock the style. Text will be approximate, so treat it as layout and mood.
+- **Ideogram 3 / Recraft v3:** best for legible UI text and vector-style art. Recraft: use a "vector illustration" or "digital illustration" style for the art.
+- **GPT Image / ChatGPT:** paste as is, portrait 1024x1536, ask for "legible text, empty image placeholders".
+- **Nano Banana (Gemini):** generate desktop first, then "same brand, now the mobile screens".
+- **Figma Make / Google Stitch / v0:** paste the section list as the brief; they output editable frames, good for option A.
 
 ## 4. Deliver to the user
-Send the pack in this order, in one message per prompt so each is easy to copy:
-1. The 5-line concept (BRAND, MODE, HUE, METAPHOR, ILLUSTRATION).
-2. The desktop landing prompt.
-3. The mobile prompt (or the app prompts).
-4. One line: "Generate and send the images back (I'll clone them pixel by pixel), or reply 'build' and I'll build straight from this direction."
+One message per item, easy to copy:
+1. The 5–7 line concept (with the researched facts that will appear).
+2. The desktop prompt (also as a .txt file).
+3. The mobile prompt (also as a .txt file).
+4. One line: "Generate and send the images back (I'll clone them pixel by pixel, replacing the placeholders with the real photos), or reply 'build'."
 Record the pack in `qa/prompt-pack.md`.
 
 ## 5. Checks before sending
-- The metaphor belongs to this product only, and the copy is real, specific and humanized, with no em-dashes.
-- The same style block appears in every prompt, and desktop and mobile describe the same brand.
-- Every section has concrete content (numbers, names, labels), not "some features".
-- The negative block is attached to every prompt.
+- No prompt asks for a photo; every photo slot is a labeled placeholder.
+- Palette and fonts are named, owned and not the AI default; each section has its band color and transition.
+- Content is complete (every real fact has a home) but the visible surface is minimal; the disclosure pattern is described.
+- Illustrations specify light direction, depth and the 3D objects; they can loop.
+- Same style block and negative block in every prompt; desktop and mobile describe the same brand; copy is real, humanized, no em-dashes.

@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.5.0 — 2026-09-25
+- **Prompt kit reescrito** (`prompt-kit.md`): as telas geradas agora parecem um print final de Figma/Dribbble, e toda foto vira um bloco em branco com legenda do que vai ali (o gerador não inventa mais o lugar). Paleta e tipografia próprias, fugindo do padrão de IA (dafont e fundições criativas primeiro), faixas de cor por seção com a transição descrita, ilustração vetorial com luz e profundidade mais objetos em 3D. Notas para geradores mais criativos (Midjourney v7, Ideogram 3, Recraft v3).
+- **Prompt pack é obrigatório e bloqueante**: pesquisar o negócio, mandar os prompts e esperar a resposta antes de qualquer código, mesmo quando o cliente já tem fotos.
+- **Conteúdo, espaço e fluxo de seções** (SKILL.md): todo fato do negócio tem lugar, mas a superfície é mínima e o resto fica atrás de interação (hotspots, cards que expandem, acordeões, sheets animados); 160–240px entre seções; cor de fundo que transiciona entre as seções no scroll.
+- **Padrão de ilustração e SVG**: camadas, uma direção de luz, gradientes, sombra suave, profundidade, alguns elementos em 3D (three.js ou CSS 3D) e loop contínuo tipo GIF em toda ilustração, pausado fora da tela e parado com reduced motion.
+- Gauntlet: portões 4 e 5 passam a cobrar essas regras.
+
 ## v1.4.1 — 2026-09-25
 - `motion-craft.md` §4: efeitos assinatura para páginas Experiência/Persuadir: dither, renderização ASCII, malha 3D que dobra (three.js TSL + GSAP, verso com UV invertido), distorção por cursor e transições de página com View Transitions API. Com orçamento de 60fps no celular e fallback estático.
 
