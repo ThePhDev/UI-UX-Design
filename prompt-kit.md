@@ -2,6 +2,17 @@
 
 This is the **v2 standard the user approved** (2026-09-25): flat color bands, owned palette and fonts, isometric vector hero with "+" hotspots, labeled image placeholders, minimal surface with content behind interaction. The paper/texture (v1.5.1) and all-typography (v1.5.2) variants were rejected; do not bring them back.
 
+## 0. Premium craft (v1.7, overrides anything louder below)
+The v2 outputs were judged **"too generative, not creative, not a professional designer's work."** Their structure stays: color bands, an isometric hero with "+" hotspots, labeled placeholders, and content behind interaction. The **dose** changes. Premium = **restraint + micro-detail**.
+1. **Palette: 1 + neutrals + 1.** One brand hue in 2–3 tonal steps (dark, mid, pale), two neutrals (warm paper and ink), and **one accent used on under 5% of the area** (the primary button, one active state, one highlighted word). Bands alternate between tonal steps of the same hue and the paper. Never a rainbow of saturated bands.
+2. **One authored illustration.** The hero art is the only illustration, drawn as a fine **architectural axonometric**: 0.75px ink linework, flat muted fills, soft ambient occlusion and one light. No cartoon look. **No 3D clip-art icons in cards.** Cards use typography, a number or a 1.5px line icon from one consistent set.
+3. **One typographic gesture per page.** A high-contrast serif display (with an italic for one word) and a neo-grotesk for UI, in **two sizes that matter**: huge (140–200px) and small (13–16px), with almost nothing in between. No outlined words, curved text or stacked lockups in every section.
+4. **Micro-detail is where "designer" shows.** Every section carries 3–5 of these: hairline 1px rules on the grid; small captions under placeholders ("Fig. 02, Piscina, 8 × 4 m"); tabular numerals for facts (10.000 m², 51 vagas, 16 leitos); a tiny arrow ↗ on links; a measured annotation line on the hero art ("80 m" with end ticks); a hotspot legend; an aligned meta row (endereço · horário · telefone) in small type; subtle 4–8px radii; shadows so soft you notice them only on hover cards.
+5. **Negative space is the luxury.** 55–65% of each shot is empty paper. Content hangs on an asymmetric 12-column grid (text on columns 1–5, art on 7–12). Nothing is centered by default.
+6. **Decoration diet.** No petals, confetti, waves on every edge, sparkles or drop-shadowed stickers. Allow **one** band transition shape per page (for example, a single soft curve after the hero), and make every other band edge straight.
+7. **Detail budget: shots, not a whole page.** Image models spread detail across the canvas, so a 10-section page comes out shallow. Generate **one section per image** at high resolution (a "Figma frame, zoomed in"): 1 hero shot, then 1 shot per key section, then an optional overview. Each shot prompt is short, concrete and measured (positions, sizes, counts), not a list of adjectives.
+8. **Name the craft, not the vibe.** Useful terms: "editorial layout", "Swiss grid", "architectural axonometric drawing", "hairline rules", "tabular figures", "optical margin alignment", "generous negative space", "restrained palette", "Awwwards Site of the Day quality, designed by an independent studio". Useless terms: "beautiful", "modern", "stunning", "vibrant".
+
 When the user asks for a site or app **without a reference image**, deliver a **prompt pack** that generates the reference screens (desktop + mobile) **before any code**. Never skip it, even when the client already has real photos: the user considers these prompts essential. Wait for the user to choose:
 - **A) Generate the images** and send them back → the build continues on **Path A** (pixel by pixel from the generated screens).
 - **B) "build"** → the pack becomes the spec: its style block, sections and copy go into `direction.md` and the build follows Path B.
@@ -66,7 +77,19 @@ Same bands, fonts and illustrations as desktop; 44px tap targets; 20px margins.
 {NEGATIVE}
 ```
 
+### 2.4 Section shot (v1.7 default: one per key section)
+```
+DELIVERABLE: One zoomed-in Figma frame of a single website section, 1440x900 (16:10), exported flat and razor-sharp, as an Awwwards Site of the Day would present it. Nothing else in the image.
+LAYOUT: {band color}; asymmetric 12-column grid with faint 1px hairlines at the column edges; {what sits on columns 1-5} / {what sits on 7-12}; 55-65% empty space.
+TYPE: "{DISPLAY}" serif at {size}px for "{HEADLINE}" (the word "{WORD}" in italic); "{UI}" neo-grotesk 14px for everything else; tabular figures for numbers.
+CONTENT: {exact elements with exact text, counts and positions}.
+MICRO-DETAILS: {3-5 from Premium craft §4, concrete}.
+ACCENT: {ACCENT hex} only on {the one element}.
+AVOID: 3D clip-art icons, cartoon style, more than {N} colors, outlined or curved text, waves, petals, confetti, stickers, heavy shadows, centered hero, stock photos, gibberish text.
+```
+
 ## 3. Per-tool notes (creative generators first)
+- **GPT Image 2.5 (the user's generator):** use `quality: high` for shots with little text and `xhigh` for form or table shots. Use 1536x1024 (or 2160x1350 final) for section shots. Iterate one change at a time, feeding back the previous image, and restate the palette and fonts in every edit.
 - **Midjourney v7:** best for creative layouts. Put the style block last and add `--ar 2:3 --style raw --stylize 250 --chaos 15`. Use `--sref` with a Dribbble shot you like to lock the style. Text will be approximate, so treat it as layout and mood.
 - **Ideogram 3 / Recraft v3:** best for legible UI text and vector-style art. Recraft: use a "vector illustration" or "digital illustration" style for the art.
 - **GPT Image / ChatGPT:** paste as is, portrait 1024x1536, ask for "legible text, empty image placeholders".
@@ -76,7 +99,7 @@ Same bands, fonts and illustrations as desktop; 44px tap targets; 20px margins.
 ## 4. Deliver to the user
 One message per item, easy to copy:
 1. The 5–7 line concept (with the researched facts that will appear).
-2. The desktop prompt (also as a .txt file).
+2. The **hero shot** prompt, then **3–5 section shot** prompts (§2.4), each as its own message and also together as a .txt file. Optionally add the full-page overview prompt, clearly marked as an overview only.
 3. The mobile prompt (also as a .txt file).
 4. One line: "Generate and send the images back (I'll clone them pixel by pixel, replacing the placeholders with the real photos), or reply 'build'."
 Record the pack in `qa/prompt-pack.md`.

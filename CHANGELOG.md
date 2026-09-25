@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.7.0 — 2026-09-25
+- **Premium craft** (`prompt-kit.md` §0), porque as imagens v2 saíram genéricas: paleta 1 cor em tons + neutros + 1 acento (<5 %), uma única ilustração autoral (axonométrica arquitetônica de traço fino, sem ícones 3D de clip-art), um só gesto tipográfico (serifa de alto contraste + neo-grotesca, com dois tamanhos que importam), microdetalhes de designer (linhas finas, legendas `Fig.`, números tabulares, cotas, setas ↗), 55–65 % de espaço vazio e uma dieta de decoração.
+- **Uma seção por imagem** (§2.4) em vez da página inteira, para o gerador concentrar o detalhe. A entrega agora é hero + 3–5 seções + mobile.
+- Vocabulário de ofício no prompt (editorial layout, Swiss grid, hairline rules, tabular figures) em vez de adjetivos.
+
 ## v1.6.0 — 2026-09-25
 - **Camada de polimento**: `vendor/emil` (emil-design-eng) e `vendor/better` (better-ui, typography, colors, layout, accessibility, writing, break, interface-review, explain-interface, de Jakub Krehel, MIT), usados por tema e com valores exatos.
 - **Cursor**: continua sendo uma seta de cursor, customizada com efeitos ao redor. Um cursor de bolinha ou blob agora reprova no portão 4.

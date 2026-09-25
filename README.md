@@ -5,7 +5,7 @@
 **O padrão de design do PH para o Claude Code.**
 Qualquer interface, com ou sem referência: medida pixel a pixel, pensada para celular desde o início, com animação caprichada e revisada por um gauntlet de 8 portões, que termina num júri no estilo Awwwards, antes de chegar em você com link de preview.
 
-`v1.6.0` · Claude Code skill · Python + Playwright
+`v1.7.0` · Claude Code skill · Python + Playwright
 
 </div>
 
@@ -39,6 +39,7 @@ Pediu um site ou app sem imagem? A skill começa entregando um **pacote de promp
 - **Conceito em 5 linhas:** marca, modo, cor, metáfora do herói e sistema de ilustração.
 - **Prompts** da landing completa no desktop, das telas de celular e das telas de app, todos com o mesmo bloco de estilo e o mesmo bloco negativo.
 - **Dicas por ferramenta:** GPT Image, Nano Banana, Midjourney, Figma Make/Stitch.
+- **Premium craft (v1.7)**: paleta contida (1 cor + neutros + 1 acento), uma ilustração autoral só, microdetalhes de designer, 60 % de espaço vazio e **uma seção por imagem** para o gerador não sair genérico.
 - Depois você escolhe: **gera as imagens** e manda de volta (a skill clona pixel a pixel) **ou** responde "build" e ela constrói direto a partir do pacote.
 
 ### 🧠 Camada de gosto (a tasteskill original do PH)
