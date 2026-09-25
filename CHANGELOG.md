@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.4.0 — 2026-09-25
+- `motion-craft.md`: repertório de motion de nível Dribbble (uma forma só com morph, molas, bordas líquidas, manipulação direta, trocas com blur, ritmo, regras de engenharia seek-safe) + brief melhorado para reels de UI com HyperFrames.
+- `scripts/motion/springs.js`: molas de forma fechada (duration/bounce), `retarget`, `liquidEdges`, `rubberBand`, `dragThenRelease`, `swap`, `beat`, `LiveSpring`. Testado numericamente e num demo real (`demo.html`).
+
 ## v1.3.0 — 2026-09-25
 - **Gerador de prompts** (`prompt-kit.md`): em projetos sem referência, a skill entrega primeiro um conceito em 5 linhas e os prompts para gerar as telas de desktop, mobile e app no estilo minimalista criativo feito por humanos. O usuário gera as imagens e a skill clona (Path A), ou manda construir direto.
 - **DNA de estilo** tirado de 7 referências estudadas (Wandor, Mugic, ShipSphere, FNJ, Finley, Odella, Oriel), salvas em `references/creative-minimal/` para servir de referência de estilo nos geradores de imagem.

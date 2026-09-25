@@ -5,7 +5,7 @@
 **O padrão de design do PH para o Claude Code.**
 Qualquer interface, com ou sem referência: medida pixel a pixel, pensada para celular desde o início, com animação caprichada e revisada por um gauntlet de 8 portões, que termina num júri no estilo Awwwards, antes de chegar em você com link de preview.
 
-`v1.3.0` · Claude Code skill · Python + Playwright
+`v1.4.0` · Claude Code skill · Python + Playwright
 
 </div>
 
@@ -67,6 +67,7 @@ A antiga skill `design-taste-frontend` foi recuperada por inteiro em [`taste-ref
 | Ações repetidas ou de teclado | Nenhum ou instantâneo |
 
 - Consulta primeiro o **catálogo React Bits** com 217 componentes animados ([`react-bits-catalog.md`](react-bits-catalog.md)). Também adapta para sites sem React.
+- **Repertório de motion humano** ([`motion-craft.md`](motion-craft.md) + [`scripts/motion/springs.js`](scripts/motion/springs.js)): uma forma só que se transforma em vez de cortar; molas matemáticas (bounce ≤ 0,2); soma de molas para mudar de alvo sem pular; indicador líquido com duas bordas; arrasto 1:1 com rubber-band e soltura com velocidade; troca de conteúdo sem sobreposição. Tem demo em `scripts/motion/demo.html` e um brief de reel de UI (HyperFrames) no ritmo da música.
 - Anima só transform, opacity e filter. Respeita `prefers-reduced-motion` e termina com `review-animations`.
 
 ### 🧩 Modo e piso de artesanato (técnicas do [Impeccable](https://github.com/pbakaus/impeccable))
@@ -147,6 +148,7 @@ ph-design-skill/
 ├── SKILL.md               # a skill (o que o Claude lê)
 ├── gauntlet.md            # os 8 portões + júri Awwwards + contrato, papéis e regras de parada
 ├── taste-reference.md     # a tasteskill original (dials, diretriz cinematográfica, AI tells, design systems)
+├── motion-craft.md        # repertório de motion humano + brief de reel
 ├── prompt-kit.md          # DNA de estilo + prompts de telas desktop/mobile/app
 ├── references/creative-minimal/  # as 7 referências de estilo
 ├── react-bits-catalog.md  # 217 componentes animados, por categoria
