@@ -60,7 +60,18 @@ Ask for the inputs, then show the state list on the beat grid before writing any
 </start>
 ```
 
-## 4. Using it in normal sites (not reels)
+## 4. Signature effects for Experience / Persuade pages
+Big "wow" techniques for portfolios, launches and art-directed landings. Use **one** as the page's signature, never in Operate or Read screens.
+| Effect | How | Notes |
+|---|---|---|
+| **Dither** (1-bit / ordered Bayer look) | Post-processing pass: a full-screen shader thresholds luminance against a Bayer matrix. React Bits `Dither` is ready to port | Pairs with a mono palette + one accent; animate the threshold on scroll or hover |
+| **ASCII rendering** | Render the 3D scene to a low-res target and map luminance to a glyph atlas in a shader (React Bits `ASCIIText` / `FaultyTerminal` as starting points) | Keep the glyph cell ≥ 8px so it reads as type, not noise; real text stays real DOM for accessibility |
+| **Folding 3D mesh** (paper or cloth bending) | three.js with **TSL** (node materials, WebGPU with a WebGL fallback): bend vertices along an axis in the vertex stage, driven by a GSAP timeline or scroll | The **backface shows a different texture** (flip the UVs on `!frontFacing`), so a fold reveals a "back side" of the content |
+| **Cursor distortion** | Pass the pointer position (smoothed with a `LiveSpring`) as a uniform, and displace vertices or UVs with a radial falloff | Falloff radius ~15–25% of the viewport; disable on touch, where there's no hover |
+| **Page transitions** | The **View Transitions API** (`next-view-transitions` in Next.js, `document.startViewTransition` in vanilla) + CSS keyframes on `::view-transition-old/new`; shared elements get a `view-transition-name` so they morph between pages | This is the "one shape, never cut" principle across routes; keep it ≤ 500ms and honor reduced motion |
+Budget: the effect must hold **60fps on a mid phone** (`vitals.py` TBT ≤ 300ms). Lazy-load the WebGL chunk after first paint, and ship a static poster frame under reduced motion or no WebGL.
+
+## 5. Using it in normal sites (not reels)
 Borrow **one or two** techniques per project where they fit:
 - a CTA that morphs into its loading and success states (one shape)
 - a liquid tab or segmented-control indicator

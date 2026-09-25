@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.4.1 — 2026-09-25
+- `motion-craft.md` §4: efeitos assinatura para páginas Experiência/Persuadir: dither, renderização ASCII, malha 3D que dobra (three.js TSL + GSAP, verso com UV invertido), distorção por cursor e transições de página com View Transitions API. Com orçamento de 60fps no celular e fallback estático.
+
 ## v1.4.0 — 2026-09-25
 - `motion-craft.md`: repertório de motion de nível Dribbble (uma forma só com morph, molas, bordas líquidas, manipulação direta, trocas com blur, ritmo, regras de engenharia seek-safe) + brief melhorado para reels de UI com HyperFrames.
 - `scripts/motion/springs.js`: molas de forma fechada (duration/bounce), `retarget`, `liquidEdges`, `rubberBand`, `dragThenRelease`, `swap`, `beat`, `LiveSpring`. Testado numericamente e num demo real (`demo.html`).
