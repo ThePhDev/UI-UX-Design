@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.5.3 — 2026-09-25
+- O prompt kit **voltou ao padrão v2 (v1.5.0)**, que o usuário aprovou como o melhor: faixas de cor lisas, paleta e fontes próprias, hero isométrico em vetor com hotspots "+", placeholders com legenda e conteúdo atrás de interação. As variantes com textura/papel (v1.5.1) e só tipografia (v1.5.2) foram descartadas.
+- O prompt de **mobile agora usa mockups realistas de iPhone 16 Pro** (de frente, sem inclinar, moldura de titânio e Dynamic Island), com a interface plana e nítida dentro da tela.
+
 ## v1.5.2 — 2026-09-25
 - Prompt kit: **sai toda a ideia de textura** (papel, grão, retícula, risograph, efeitos de impressão). O print passa a ser 100% digital, exportado do Figma, só com vetor nítido, gradiente limpo e sombra vetorial.
 - **A tipografia é a arte**: cada seção abre com um lockup tipográfico customizado, com tamanhos e pesos misturados, palavras vazadas, palavra em curva, letras sobre a ilustração e ligadura própria.
