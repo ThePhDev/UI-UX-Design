@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.6.0 — 2026-09-25
+- **Camada de polimento**: `vendor/emil` (emil-design-eng) e `vendor/better` (better-ui, typography, colors, layout, accessibility, writing, break, interface-review, explain-interface, de Jakub Krehel, MIT), usados por tema e com valores exatos.
+- **Cursor**: continua sendo uma seta de cursor, customizada com efeitos ao redor. Um cursor de bolinha ou blob agora reprova no portão 4.
+- **Economia de tokens**: tiers S/M/L, leitura por seção, números antes de pixels (`shoot.py` gera `*.view.jpg` de 1000px), crítico combinado no tier M, júri de 3 no M, subagentes enxutos e correções em lote.
+- O ecossistema Jev foi avaliado e não entrou: exige chave paga e serve para rotear ferramentas, não para design.
+
 ## v1.5.3 — 2026-09-25
 - O prompt kit **voltou ao padrão v2 (v1.5.0)**, que o usuário aprovou como o melhor: faixas de cor lisas, paleta e fontes próprias, hero isométrico em vetor com hotspots "+", placeholders com legenda e conteúdo atrás de interação. As variantes com textura/papel (v1.5.1) e só tipografia (v1.5.2) foram descartadas.
 - O prompt de **mobile agora usa mockups realistas de iPhone 16 Pro** (de frente, sem inclinar, moldura de titânio e Dynamic Island), com a interface plana e nítida dentro da tela.

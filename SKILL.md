@@ -10,6 +10,20 @@ This is the user's house style for anything with a UI, with or without a referen
 
 **Done = one full gauntlet round with zero failures + a working public preview link.** Not "looks close".
 
+## Token economy (lean run, same quality bar)
+**Size the run first** and write the tier at the top of `qa/gauntlet.md`:
+| Tier | When | Process |
+|---|---|---|
+| **S** | Tweak to one component or a visual fix in an existing UI | No prompt pack and no subagents. Checks: `impeccable detect`, `shoot.py --viewports desktop,mobile`, and only the matching `vendor/better/*` file. Label it self-review. |
+| **M** | One page or one screen set | Prompt pack. Gates 1–7, with **one combined critic subagent** covering gates 2, 5 and 7 in a single call. Jury of 3 (not 5) unless the user asks for the full jury. |
+| **L** | Full site or app, or anything delivered to a client | The full process and the full 5-juror jury. |
+- **Read by section, never whole.** `taste-reference.md` (16k words), `react-bits-catalog.md`, the Impeccable references and `vendor/` are loaded only at the step that names them. Grep the heading, then Read with offset/limit. Never re-read a file you already have.
+- **Numbers before pixels.** Decide from `diff.py`, `shoot.py` `report.json`, `vitals.py` and `impeccable detect` output first. Look at images only where the numbers point: open the `*.view.jpg` copies (1000px wide, which `shoot.py` writes), and use `palette.py --crop` for details. Never view full-resolution page PNGs.
+- **Lean subagents.** Pass file paths, not pasted content. Ask for findings only, in the `ID | gate | location | severity | evidence | fix` format, max ~250 words. Run critics and jurors on `sonnet` and mechanical checks on `haiku`. Put independent critics in one message so they run in parallel.
+- **Batch the work.** Collect every finding of a round, fix them in one pass of small `Edit`s, rebuild once, and re-check only the failed gates plus anything the fix could affect.
+- **Write once, point after.** `spec.md`, `direction.md` and `prompt-pack.md` are written once and referenced by path in later steps and prompts.
+- **Short user updates.** 1–2 lines per milestone; the long report is sent once, at delivery.
+
 ## Tools (`python ~/.claude/skills/ph-design-skill/scripts/<script>`)
 | Script | Use |
 |---|---|
@@ -38,13 +52,24 @@ Both paths then share Taste, Mobile, Motion, Copy, Gauntlet and Deliver.
 - **Before the first UI edit**, read `~/.claude/skills/impeccable/reference/craft-floor.md` and build to it.
   - *Verify* list: contrast, depth, spacing, type measure and tracking, one authored motion moment instead of identical entrances, all states, **themed browser surfaces** (selection, caret, scrollbars, focus rings, underline offset, tabular numerals) and copy.
   - *Refuse* list: eyebrow/kicker labels above headings, gradient text, same-size icon cards as the page structure, hero-metric template, decorative glass, colored side borders, costume monospace, emoji icons, fake grid backgrounds.
+- **Polish layer: exact values from Emil Kowalski and Jakub Krehel, always on.** Read [vendor/emil/SKILL.md](vendor/emil/SKILL.md) (design-engineering philosophy: the invisible details, when to animate, component polish) and `vendor/better/*` by topic, **only the file for the step at hand**:
+  - `better-ui`: concentric radius (outer = inner + padding), optical alignment, shadows for elevation and borders for structure, icon swaps (scale 0.25→1, opacity 0→1, blur 4px→0), 1px image outlines at 10% black or white, `scale(0.96)` on press, subtle exits, transitions named per property, no transitions during a theme switch.
+  - `better-typography`: scale, wrapping, OpenType and tabular numbers.
+  - `better-colors`: palette generation, OKLCH tokens and contrast.
+  - `better-layout`: grouping, alignment and progressive disclosure.
+  - `better-accessibility`: focus, hit areas, ARIA and reduced motion.
+  - `better-writing`: product microcopy, used alongside humanizer.
+  - `break`: renders a component in every state and scenario; use it for the gate 3/7 stress test.
+  - `interface-review`: the review format for the combined critic.
+  - `explain-interface/from-an-image.md`: decomposing a reference in Path A step 1.
+  For simple interactive state changes (hover, press, open/close), use CSS transitions, which are interruptible. The pure-function-of-time rule in motion-craft.md is for choreography, scroll scenes and reels.
 - **The brief wins:** pinned fonts, palettes and eras beat any default here. Refining keeps the current identity; a redesign replaces it completely, so never polish the look you're discarding.
 
 ## Taste layer (the user's original tasteskill, always on)
 [taste-reference.md](taste-reference.md) is the user's own anti-slop design skill. Read the named sections when the step comes up; don't load it all at once.
 1. **Design Read + dials before building** (§0–1). Write one line with the design read and set `DESIGN_VARIANCE / MOTION_INTENSITY / VISUAL_DENSITY`. The baseline is **8 / 10 / 4**. Infer variance and density from the brief; motion stays at 10 unless the user or accessibility says otherwise. Record them in `spec.md` or `direction.md`.
 2. **Brief names a design system** (Material, Fluent, Carbon, Radix, shadcn, Primer, GOV.UK, USWDS, Polaris, Atlassian, Bootstrap): use the official packages (§2 and Appendix A). Don't imitate them by hand.
-3. **Cinematic directive for sites, portfolios and marketing pages** (§5.E–5.G): GSAP-led choreography like a motion-design video, a **custom animated SVG cursor** on fine-pointer desktops, and **every visible SVG animated with intent**. A generic entrance repeated everywhere does not count. The Motion budget table below still governs frequently used controls.
+3. **Cinematic directive for sites, portfolios and marketing pages** (§5.E–5.G): GSAP-led choreography like a motion-design video, a **custom animated SVG cursor** on fine-pointer desktops that **still looks like a pointer arrow** (brand-styled arrow, tip = hotspot, with effects around it such as a trail, click ripple, press scale, a hover label chip and magnetic pull; never a dot, blob or circle; see the §5.F PH override), and **every visible SVG animated with intent**. A generic entrance repeated everywhere does not count. The Motion budget table below still governs frequently used controls.
 4. **Hard rules during the build:** layout discipline (§4.7), page theme lock and dark mode (§4.11, §8), and performance and accessibility guardrails (§6).
 5. **AI tells are banned** (§9), including the **em-dash ban** (§9.G) in all UI text, "Jane Doe" placeholder content, and fake social proof.
 6. **Final pre-flight** (§14) runs as the checklist inside the gauntlet.
@@ -89,7 +114,7 @@ The user likes a lot of motion: GSAP, scroll-driven sections, custom cursors, 3D
 | Keyboard/repeated actions | None or instant |
 - **Human-level motion repertoire:** [motion-craft.md](motion-craft.md) plus `scripts/motion/springs.js`. It covers one shape that morphs instead of cutting, closed-form springs (bounce ≤ 0.2), sums of springs for retargeting, two-edge liquid indicators, 1:1 drag with rubber-band and a velocity-carrying release, and non-overlapping content swaps. Borrow 1–2 per project as the authored moment. For UI motion reels or showcase videos, use its reel brief with HyperFrames.
 - Build with `animate`. Apply `emil-design-eng` polish, and use `apple-design` for springs, drag, sheets and gestures. Name effects with `animation-vocabulary` before building.
-- **React Bits** (217 animated components: text effects, backgrounds, cursors, galleries, micro-interactions) → [react-bits-catalog.md](react-bits-catalog.md). Check it before hand-building an effect. React projects: `npx shadcn@latest add @react-bits/<Name>-TS-TW`. Vanilla/Vite projects: port from the local source. Customize colors and timing, and never ship demo defaults.
+- **React Bits** (217 animated components: text effects, backgrounds, cursor effects (only as layers around the arrow), galleries, micro-interactions) → [react-bits-catalog.md](react-bits-catalog.md). Check it before hand-building an effect. React projects: `npx shadcn@latest add @react-bits/<Name>-TS-TW`. Vanilla/Vite projects: port from the local source. Customize colors and timing, and never ship demo defaults.
 - Only transform, opacity and filter. Respect `prefers-reduced-motion`. Afterwards run `review-animations`; on an existing project, `find-animation-opportunities` shows what's missing.
 - Libraries (charts, OTP, drag and drop, toasts) → `pick-ui-library`.
 

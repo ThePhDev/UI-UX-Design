@@ -5,7 +5,7 @@
 **O padrão de design do PH para o Claude Code.**
 Qualquer interface, com ou sem referência: medida pixel a pixel, pensada para celular desde o início, com animação caprichada e revisada por um gauntlet de 8 portões, que termina num júri no estilo Awwwards, antes de chegar em você com link de preview.
 
-`v1.4.0` · Claude Code skill · Python + Playwright
+`v1.6.0` · Claude Code skill · Python + Playwright
 
 </div>
 
@@ -70,6 +70,22 @@ A antiga skill `design-taste-frontend` foi recuperada por inteiro em [`taste-ref
 - **Repertório de motion humano** ([`motion-craft.md`](motion-craft.md) + [`scripts/motion/springs.js`](scripts/motion/springs.js)): uma forma só que se transforma em vez de cortar; molas matemáticas (bounce ≤ 0,2); soma de molas para mudar de alvo sem pular; indicador líquido com duas bordas; arrasto 1:1 com rubber-band e soltura com velocidade; troca de conteúdo sem sobreposição. Tem demo em `scripts/motion/demo.html` e um brief de reel de UI (HyperFrames) no ritmo da música.
 - Anima só transform, opacity e filter. Respeita `prefers-reduced-motion` e termina com `review-animations`.
 
+### ✨ Camada de polimento (Emil Kowalski + Jakub Krehel)
+Valores exatos, sempre ativos, lidos por tema e só na etapa em que são usados ([`vendor/`](vendor)):
+- **emil-design-eng**: a filosofia dos detalhes invisíveis, de quando animar e do polimento de componentes.
+- **better-ui**: raio concêntrico (externo = interno + padding), alinhamento óptico, sombra para elevação e borda para estrutura, troca de ícone (escala 0,25→1, blur 4px→0), contorno de 1px nas imagens, `scale(0.96)` ao clicar, saídas sutis, transição sem "manchar" na troca de tema.
+- **better-typography / colors / layout / accessibility / writing**: tipografia, paletas OKLCH e contraste, agrupamento e revelação progressiva, foco e áreas de toque, microcopy.
+- **break** (componente testado em todos os estados), **interface-review** (formato do crítico) e **explain-interface** (desmontar a referência).
+
+### 🖱️ Cursor personalizado (que continua sendo cursor)
+Sempre uma **seta** (a ponta é o ponto exato do clique) com a cor e o estilo do site. Os efeitos ficam **ao redor** dela: rastro suave, ondinha ao clicar, encolhe ao pressionar, etiqueta no hover ("Ver", "Abrir"), atração magnética e inclinação no movimento. Bolinha, blob ou círculo no lugar da seta reprova no portão 4.
+
+### 🪙 Economia de tokens
+- **Tamanho da execução**: S (ajuste pequeno, sem subagentes), M (uma página: um crítico combinado e júri de 3) e L (site ou app completo: tudo).
+- **Leitura por seção**: os arquivos grandes nunca são lidos inteiros.
+- **Números antes de pixels**: os scripts decidem primeiro, e as imagens são vistas em cópias JPEG de 1000px (`*.view.jpg`).
+- **Subagentes enxutos**: recebem caminhos em vez de conteúdo, respondem em formato curto e usam sonnet ou haiku.
+- **Correções em lote** por round.
 ### 🧩 Modo e piso de artesanato (técnicas do [Impeccable](https://github.com/pbakaus/impeccable))
 - **4 modos por tela**:
   - **Persuadir** (landing, marketing) e **Experiência** (portfólio): motion cinematográfico.
@@ -149,6 +165,7 @@ ph-design-skill/
 ├── gauntlet.md            # os 8 portões + júri Awwwards + contrato, papéis e regras de parada
 ├── taste-reference.md     # a tasteskill original (dials, diretriz cinematográfica, AI tells, design systems)
 ├── motion-craft.md        # repertório de motion humano + brief de reel
+├── vendor/                # emil-design-eng + pacote better-* (MIT, Jakub Krehel)
 ├── prompt-kit.md          # DNA de estilo + prompts de telas desktop/mobile/app
 ├── references/creative-minimal/  # as 7 referências de estilo
 ├── react-bits-catalog.md  # 217 componentes animados, por categoria

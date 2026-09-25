@@ -542,6 +542,8 @@ Use the installed GSAP version's [timeline documentation](https://gsap.com/docs/
 
 ### 5.F Custom Animated SVG Cursor (Required on Fine-Pointer Desktop)
 
+**PH override (2026-09-25): the cursor must still look like a cursor.** Draw a **pointer arrow** (the classic arrow silhouette, tip = hotspot at the exact pointer position), customized in the site's style: brand color fill, a contrasting outline so it stays visible on every band, a slightly rounded or stylized tip, and a stroke weight that matches the icon system. Effects live **around** the arrow, not instead of it: a soft trailing ghost or a spring-lagged shadow, a click ripple, scale 0.9 on press, a small label or icon chip that appears beside the arrow on actionable hover ("Ver", "Arrastar", "Abrir"), a magnetic pull toward buttons, and a gentle tilt in the direction of travel. Over text inputs keep the native I-beam, and over draggables the arrow can switch to a hand drawn in the same style. **Never replace the arrow with a dot, blob, circle or ring.** A follower circle is allowed only as a secondary layer behind the arrow.
+
 Design an original SVG cursor with a recognizable silhouette, a precise hotspot, and a visual relationship to the site's typography or signature motif. A plain replacement dot with no authored vector animation does not meet this requirement. Animate its SVG groups, strokes, or compatible shapes through deliberate contextual states.
 
 * Define **idle, actionable-hover, press, and leave** states; add drag/media states only when those interactions exist. Communicate the actual available action. Use short transitions and a stable precision indicator even if a secondary decorative layer follows with inertia.

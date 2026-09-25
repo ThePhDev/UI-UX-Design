@@ -9,6 +9,7 @@ Writes OUTDIR/<viewport>.png and OUTDIR/report.json; prints a short summary.
 """
 import argparse, json, sys
 from pathlib import Path
+from PIL import Image
 from playwright.sync_api import sync_playwright
 
 VIEWPORTS = {
@@ -91,6 +92,9 @@ def main():
             page.goto(a.url, wait_until="networkidle")
             settle(page, a.settle, not a.no_scroll)
             page.screenshot(path=str(out / f"{name}.png"), full_page=a.full)
+            # token-cheap copy for viewing: 1000px wide JPEG (read this, not the PNG)
+            im = Image.open(out / f"{name}.png").convert("RGB")
+            im.thumbnail((1000, 4000)); im.save(out / f"{name}.view.jpg", quality=72)
             issues = page.evaluate(AUDIT_JS, mobile)
             report[name] = {"size": [w, h], "errors": errors[:10], "issues": issues}
             ctx.close()
