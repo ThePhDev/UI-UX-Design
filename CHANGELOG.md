@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.9.2 — 2026-09-26
+- **Path A fluido e cinematográfico**: a referência é composição, não largura fixa. O build ocupa a tela toda em qualquer monitor, cada seção vira uma cena fixa com coreografia no scroll e uma abertura monta a página. Motivo: no NOVA a cópia 1:1 ficou numa coluna estreita e "parada".
+
 ## v1.9.1 — 2026-09-26
 - **Path A sem recortes**: nenhuma arte é cortada da referência. Toda ilustração, objeto 3D e cenário pintado é recriado em código (three.js com um renderer compartilhado, shader para paisagens com névoa e luz, SVG em camadas) e anima em loop. Exceções: fotos reais do cliente e logos. Motivo: no NOVA os recortes pareciam colados e deixaram a página parada.
 
