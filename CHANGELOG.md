@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.7.1 — 2026-09-26
+- Prompt kit §0 (itens 9–11), aprendidos no teste com Qwen Image 2.1 na FLORA: aprovar o hero primeiro e gerar desktop e mobile com o hero como referência de imagem; a ilustração única vira vinhetas do mesmo desenho em todas as seções; em proporção alta a resolução é baixa (~416×1024), então a imagem serve de guia de layout.
+
 ## v1.7.0 — 2026-09-25
 - **Premium craft** (`prompt-kit.md` §0), porque as imagens v2 saíram genéricas: paleta 1 cor em tons + neutros + 1 acento (<5 %), uma única ilustração autoral (axonométrica arquitetônica de traço fino, sem ícones 3D de clip-art), um só gesto tipográfico (serifa de alto contraste + neo-grotesca, com dois tamanhos que importam), microdetalhes de designer (linhas finas, legendas `Fig.`, números tabulares, cotas, setas ↗), 55–65 % de espaço vazio e uma dieta de decoração.
 - **Uma seção por imagem** (§2.4) em vez da página inteira, para o gerador concentrar o detalhe. A entrega agora é hero + 3–5 seções + mobile.
