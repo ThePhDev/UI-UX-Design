@@ -5,7 +5,7 @@
 **O padrão de design do PH para o Claude Code.**
 Qualquer interface, com ou sem referência: medida pixel a pixel, pensada para celular desde o início, com animação caprichada e revisada por um gauntlet de 8 portões, que termina num júri no estilo Awwwards, antes de chegar em você com link de preview.
 
-`v1.8.0` · Claude Code skill · Python + Playwright
+`v1.9.0` · Claude Code skill · Python + Playwright
 
 </div>
 

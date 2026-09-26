@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.9.0 — 2026-09-26
+- **Referências reais como imagem de estilo** (`prompt-kit.md` §000): subir 2–3 das referências de Figma na FLORA e gerar no GPT Image 2.5 Sunburst (is2i, 2K) com elas em `image_urls`. O resultado herda o nível de acabamento delas: paleta pastel viva, família de ícones 3D, ilustração com personalidade, cards flutuantes, tiles, bento, botões com relevo, mix tipográfico e wordmark colorido.
+- Corrige o exagero de contenção da v1.7/v1.8 (a v1.8 continua valendo para o build: tokens por baixo).
+
 ## v1.8.0 — 2026-09-26
 - **Novo método padrão** (`prompt-kit.md` §00): a IA gera só as ilustrações (hero + vinhetas no mesmo traço, recortadas com máscara alfa), e o layout vira um frame de Figma em código com tokens (uma escala de tipo, espaçamento em grid de 8px, fontes reais com itálico verdadeiro). O frame é renderizado (PC + 4 iPhones) e aprovado antes do build. Motivo: layouts inteiros gerados por IA saem com tipografia e espaçamento inconsistentes.
 - Regra de fonte: conferir se a família tem itálico de verdade (a Gambarino não tem; Zodiak, Erode e Sentient têm).
