@@ -77,7 +77,7 @@ Both paths then share Taste, Mobile, Motion, Copy, Gauntlet and Deliver.
 ## Path A — rebuild a reference, pixel by pixel
 Eyeballing gets you ~85%. The last 15% only comes from measuring.
 1. **Read the reference like a spec.** Run `palette.py`, then crop and zoom every region (nav, hero, cards, footer). Write `qa/spec.md` with: canvas width, grid/columns, spacing scale, colors (hex), type (sizes, weights, line-heights, letter-spacing), radii, shadows, icons and images. Use the real text from the image, and only invent text where the image has none. Fonts: see Type.
-   **Photos, illustrations and logos:** use the user's own asset if they have one. Otherwise extract it from the reference (`palette.py REF --crop BOX assets/x.png --scale 1`) and tell the user it's a low-res placeholder to swap. Never grab random web images.
+   **Photos, illustrations and logos:** use the user's own asset if they have one. **Never crop art out of the reference** (the user rejected it: crops look pasted, break the atmosphere and freeze the page). Recreate every illustration, 3D object and painted backdrop in code, with the same light and palette and an idle loop: three.js for objects (one shared renderer), a fragment shader for painted scenes (landscapes, fog, light), layered SVG for flat art. The only exceptions are real photos of the client's business (labeled placeholders until they arrive) and logos. Never grab random web images.
 2. **Decide the target.** For a desktop reference, build that width first and design the mobile version (see Mobile). A phone-screen reference is an **app**: 390px, `100dvh`, safe areas, bottom nav, 44px touch targets. Give it its own desktop layout, don't stretch the phone screen. If the user sends phone mockups, follow them screen by screen.
 3. **Static clone first, no motion.** Use semantic HTML, CSS variables from the spec, `clamp()` type and a real grid.
 4. **Measure loop.** `shoot.py --viewports <refW>x<refH-or-900> --no-scroll` (or `--full` for a full-page reference) at the **reference's exact width**. Never diff a 1440 shot against a 1920 reference. Then `diff.py` → open `-side.png` → fix the **worst cell** first. Canvas, WebGL, video and swapped photos go in `--exclude`. Repeat until **match ≥ 97%**, height drift ≤ 8px, and no worst cell > 10%.
@@ -131,6 +131,7 @@ The user likes a lot of motion: GSAP, scroll-driven sections, custom cursors, 3D
 | Prompts that ask the generator for photos of the place | Labeled image placeholders only; real photos come from the client |
 | Every fact dumped on the page | Minimal surface, details behind accordions, hotspots and sheets |
 | Flat single-color SVGs, frozen after the entrance | Layers, light, depth, some 3D, and a seamless idle loop |
+| Cropping illustrations out of the reference | Rebuild them in code (three.js / shader / SVG), animated |
 | Declaring "pixel perfect" from memory of the image | Only `diff.py` numbers count |
 | Fixing random spots | Always fix the worst cell first; re-diff after each batch |
 | Diffing mid-animation | Shots come from `shoot.py` (it settles and finishes animations) |

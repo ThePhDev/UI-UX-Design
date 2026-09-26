@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.9.1 — 2026-09-26
+- **Path A sem recortes**: nenhuma arte é cortada da referência. Toda ilustração, objeto 3D e cenário pintado é recriado em código (three.js com um renderer compartilhado, shader para paisagens com névoa e luz, SVG em camadas) e anima em loop. Exceções: fotos reais do cliente e logos. Motivo: no NOVA os recortes pareciam colados e deixaram a página parada.
+
 ## v1.9.0 — 2026-09-26
 - **Referências reais como imagem de estilo** (`prompt-kit.md` §000): subir 2–3 das referências de Figma na FLORA e gerar no GPT Image 2.5 Sunburst (is2i, 2K) com elas em `image_urls`. O resultado herda o nível de acabamento delas: paleta pastel viva, família de ícones 3D, ilustração com personalidade, cards flutuantes, tiles, bento, botões com relevo, mix tipográfico e wordmark colorido.
 - Corrige o exagero de contenção da v1.7/v1.8 (a v1.8 continua valendo para o build: tokens por baixo).
