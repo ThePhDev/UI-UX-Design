@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.8.0 — 2026-09-26
+- **Novo método padrão** (`prompt-kit.md` §00): a IA gera só as ilustrações (hero + vinhetas no mesmo traço, recortadas com máscara alfa), e o layout vira um frame de Figma em código com tokens (uma escala de tipo, espaçamento em grid de 8px, fontes reais com itálico verdadeiro). O frame é renderizado (PC + 4 iPhones) e aprovado antes do build. Motivo: layouts inteiros gerados por IA saem com tipografia e espaçamento inconsistentes.
+- Regra de fonte: conferir se a família tem itálico de verdade (a Gambarino não tem; Zodiak, Erode e Sentient têm).
+
 ## v1.7.1 — 2026-09-26
 - Prompt kit §0 (itens 9–11), aprendidos no teste com Qwen Image 2.1 na FLORA: aprovar o hero primeiro e gerar desktop e mobile com o hero como referência de imagem; a ilustração única vira vinhetas do mesmo desenho em todas as seções; em proporção alta a resolução é baixa (~416×1024), então a imagem serve de guia de layout.
 

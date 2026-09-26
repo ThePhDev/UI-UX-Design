@@ -2,7 +2,14 @@
 
 This is the **v2 standard the user approved** (2026-09-25): flat color bands, owned palette and fonts, isometric vector hero with "+" hotspots, labeled image placeholders, minimal surface with content behind interaction. The paper/texture (v1.5.1) and all-typography (v1.5.2) variants were rejected; do not bring them back.
 
-## 0. Premium craft (v1.7, overrides anything louder below)
+## 00. Method v1.8 (overrides the rest): AI draws the art, code draws the layout
+The user rejected AI-generated full layouts for **inconsistent type, spacing and fonts**. An image model has no type system or grid, so every section gets a different style. Real designers lay out in Figma with fixed tokens and commission only the illustrations. So:
+1. **Image model = illustrations only.** Generate the hero illustration alone (see §0 for the style), get it approved, then generate 3–5 **isolated vignettes** of the same drawing using the hero as the image reference (plain paper background, no text, no UI). Cut the backgrounds out with a color-distance alpha matte so the art floats on the page.
+2. **Layout = a code comp (a "Figma frame").** Build a static HTML comp with **design tokens**: one type scale (for example 12 · 14 · 16 · 20 · 32 · 88 · 104), one spacing scale on an 8px grid, the same section padding everywhere, a 12-column grid, and **real self-hosted fonts that have true italics** (check the font's styles first; Gambarino has no italic, so the browser fakes it, which is a typographic error; Zodiak, Erode and Sentient from Fontshare do have them). Every heading of the same level uses the same class.
+3. **Render and send** the desktop full page (1440) and 4 phone screens (390, composed in iPhone frames with a status-bar safe area) **for approval before the animated build**. Changes are made in the tokens, so they stay consistent everywhere.
+4. Prompt packs for full-page images (below) are still available when the user explicitly wants an AI mood image, but they are no longer the default reference for building.
+
+## 0. Premium craft (v1.7)
 The v2 outputs were judged **"too generative, not creative, not a professional designer's work."** Their structure stays: color bands, an isometric hero with "+" hotspots, labeled placeholders, and content behind interaction. The **dose** changes. Premium = **restraint + micro-detail**.
 1. **Palette: 1 + neutrals + 1.** One brand hue in 2–3 tonal steps (dark, mid, pale), two neutrals (warm paper and ink), and **one accent used on under 5% of the area** (the primary button, one active state, one highlighted word). Bands alternate between tonal steps of the same hue and the paper. Never a rainbow of saturated bands.
 2. **One authored illustration.** The hero art is the only illustration, drawn as a fine **architectural axonometric**: 0.75px ink linework, flat muted fills, soft ambient occlusion and one light. No cartoon look. **No 3D clip-art icons in cards.** Cards use typography, a number or a 1.5px line icon from one consistent set.
