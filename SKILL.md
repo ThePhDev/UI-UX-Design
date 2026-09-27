@@ -22,9 +22,9 @@ The user's goal: "build it for business X from these references" and the site sh
 8. **Colour and light:** build the palette with the `color-palette` and `color-expert` skills (OKLCH ramps, no generic AI hues). Add a lighting layer on top: bloom and glow, light rays, grain, colour washes between scenes.
 9. **3D finish:** follow the `threejs-*` skills. Use a studio HDRI, real glass (transmission), contact shadows, textured and shader-driven surfaces, and solid modelled pieces (never clipped shells). Use FLORA-generated GLB when procedural modelling can't reach the reference.
 10. **Copy:** every visible line goes through `humanizer`. No exceptions, including cloned text that you adapt.
+11. **Review:** run the gauntlet with critics every time, plus an overlap check (no text on text, no text over busy art without a scrim) at 1920, 1440, 1280, 390 and 360 widths, and a recorded scroll video watched before sending.
 12. **Show the product, not a metaphor** (from Kirill's Sider before/after, 2026-09-27): feature cards hold a live mini-scene of the product (window chrome, chips, a result card, the model or tool that did it) instead of an abstract line icon. Headlines carry **inline icon chips** between words. Each item gets its own colour identity (icon, chip, tinted glow in the card corner), and cards have layered depth: a floating mockup over a soft tinted field.
 13. **UI taste pass:** run the `ui-taste` skill (Uizze playbooks: new-work, craft, polish, overdrive, audit) as the last design pass, and `ios-design` for app screens and the phone layout.
-11. **Review:** run the gauntlet with critics every time, plus an overlap check (no text on text, no text over busy art without a scrim) at 1920, 1440, 1280, 390 and 360 widths, and a recorded scroll video watched before sending.
 
 ## Token economy (lean run, same quality bar)
 **Size the run first** and write the tier at the top of `qa/gauntlet.md`:
