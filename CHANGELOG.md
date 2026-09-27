@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.10.1 — 2026-09-27
+- Contrato one-shot ganha os itens 12 e 13. Item 12: mostrar o produto em vez de metáfora (mini-cenas da interface nos cards, ícones em chip no meio do título, cor própria por item com brilho tingido, profundidade em camadas), a partir do antes/depois do Kirill para a Sider. Item 13: passada final com as skills `ui-taste` e `ios-design` (Uizze, Apache-2.0, instaladas via `npx skills add https://uizze.sh/`).
+
 ## v1.10.0 — 2026-09-27
 - **Contrato one-shot** (topo do SKILL.md): 11 itens obrigatórios com status registrado no gauntlet. Estilo das referências Figma dele, storytelling com cenas que se transformam, construção na entrada, HyperFrames para motion/ícones, interatividade de mouse e dedo, mobile como app com barra, tipografia editorial misturando fontes na frase, cor (skills color-palette/color-expert) com camada de luz, 3D polido (skills threejs-*, HDRI, vidro real, peças sólidas), humanizer em toda copy e revisão com checagem de sobreposição e vídeo. Motivo: feedback em áudio sobre o NOVA (resultado com cara de IA, etapas da skill puladas).
 
