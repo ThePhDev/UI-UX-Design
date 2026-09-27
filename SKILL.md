@@ -10,6 +10,20 @@ This is the user's house style for anything with a UI, with or without a referen
 
 **Done = one full gauntlet round with zero failures + a working public preview link.** Not "looks close".
 
+## One-shot contract (read first, every build)
+The user's goal: "build it for business X from these references" and the site ships complete in one pass. The user reviews the result, so the process can't be used to cut corners. Every item below is **mandatory**. Write each one's status in `qa/gauntlet.md` before delivery (done / N/A plus the reason):
+1. **Style source:** the user's own Figma references (`Downloads\Referencias`, see prompt-kit §000) set the finish level. A cloned image only gives layout and palette.
+2. **Storytelling:** one continuous story. Each scene **turns into** the next (shared-element morph, a camera move, colour wash, an object that carries over), never stacked sections with hard cuts. Sketch the story in 5–8 beats in `direction.md` first.
+3. **Construction:** nothing is in place on arrival. An intro builds the page, and each scene assembles as it enters.
+4. **Motion design assets:** use HyperFrames (`/hyperframes`, `/motion-graphics`) for the intro, loaders, transitions and animated 2D/3D icons where video beats code. Code animation stays GSAP/three.js.
+5. **Interactivity:** every hero object and icon reacts to the pointer on desktop and to the finger on phones (drag, tilt, tap bursts), not only on hover.
+6. **Mobile = app:** a bottom tab bar, detailed icons, app-like sheets and gestures, and an identity that adapts per screen (not a squeezed desktop).
+7. **Editorial type:** mix families and styles inside a single phrase (upright serif + italic + sans, as in "Ideas / that *move* the / World"), with deliberate framing, distortion and spacing. It should look like a Figma/Twitter design template, not a component library.
+8. **Colour and light:** build the palette with the `color-palette` and `color-expert` skills (OKLCH ramps, no generic AI hues). Add a lighting layer on top: bloom and glow, light rays, grain, colour washes between scenes.
+9. **3D finish:** follow the `threejs-*` skills. Use a studio HDRI, real glass (transmission), contact shadows, textured and shader-driven surfaces, and solid modelled pieces (never clipped shells). Use FLORA-generated GLB when procedural modelling can't reach the reference.
+10. **Copy:** every visible line goes through `humanizer`. No exceptions, including cloned text that you adapt.
+11. **Review:** run the gauntlet with critics every time, plus an overlap check (no text on text, no text over busy art without a scrim) at 1920, 1440, 1280, 390 and 360 widths, and a recorded scroll video watched before sending.
+
 ## Token economy (lean run, same quality bar)
 **Size the run first** and write the tier at the top of `qa/gauntlet.md`:
 | Tier | When | Process |

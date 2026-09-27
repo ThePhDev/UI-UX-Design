@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.10.0 — 2026-09-27
+- **Contrato one-shot** (topo do SKILL.md): 11 itens obrigatórios com status registrado no gauntlet. Estilo das referências Figma dele, storytelling com cenas que se transformam, construção na entrada, HyperFrames para motion/ícones, interatividade de mouse e dedo, mobile como app com barra, tipografia editorial misturando fontes na frase, cor (skills color-palette/color-expert) com camada de luz, 3D polido (skills threejs-*, HDRI, vidro real, peças sólidas), humanizer em toda copy e revisão com checagem de sobreposição e vídeo. Motivo: feedback em áudio sobre o NOVA (resultado com cara de IA, etapas da skill puladas).
+
 ## v1.9.2 — 2026-09-26
 - **Path A fluido e cinematográfico**: a referência é composição, não largura fixa. O build ocupa a tela toda em qualquer monitor, cada seção vira uma cena fixa com coreografia no scroll e uma abertura monta a página. Motivo: no NOVA a cópia 1:1 ficou numa coluna estreita e "parada".
 
