@@ -15,7 +15,7 @@ The user's goal: "build it for business X from these references" and the site sh
 1. **Style source:** the user's own Figma references (`Downloads\Referencias`, see prompt-kit §000) set the finish level. A cloned image only gives layout and palette.
 2. **Storytelling:** one continuous story. Each scene **turns into** the next (shared-element morph, a camera move, colour wash, an object that carries over), never stacked sections with hard cuts. Sketch the story in 5–8 beats in `direction.md` first.
 3. **Construction:** nothing is in place on arrival. An intro builds the page, and each scene assembles as it enters.
-4. **Motion design assets:** use HyperFrames (`/hyperframes`, `/motion-graphics`) for the intro, loaders, transitions and animated 2D/3D icons where video beats code. Code animation stays GSAP/three.js.
+4. **Motion design assets:** use HyperFrames (`/hyperframes`, `/motion-graphics`; for a launch or brand film follow `no-slop-motion`, and borrow its story thread, world rules, brand motifs and banned-defaults list for the site's storytelling too) for the intro, loaders, transitions and animated 2D/3D icons where video beats code. Code animation stays GSAP/three.js.
 5. **Interactivity:** every hero object and icon reacts to the pointer on desktop and to the finger on phones (drag, tilt, tap bursts), not only on hover.
 6. **Mobile = app:** a bottom tab bar, detailed icons, app-like sheets and gestures, and an identity that adapts per screen (not a squeezed desktop).
 7. **Editorial type:** mix families and styles inside a single phrase (upright serif + italic + sans, as in "Ideas / that *move* the / World"), with deliberate framing, distortion and spacing. It should look like a Figma/Twitter design template, not a component library.

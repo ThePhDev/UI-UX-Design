@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.10.2 — 2026-09-27
+- Item 4 do contrato aponta para a skill `no-slop-motion` (ferndesk, MIT) em filmes de lançamento/marca feitos no HyperFrames. O fio narrativo, as regras de mundo, os motivos da marca e a lista de defaults banidos também valem para o storytelling do site.
+
 ## v1.10.1 — 2026-09-27
 - Contrato one-shot ganha os itens 12 e 13. Item 12: mostrar o produto em vez de metáfora (mini-cenas da interface nos cards, ícones em chip no meio do título, cor própria por item com brilho tingido, profundidade em camadas), a partir do antes/depois do Kirill para a Sider. Item 13: passada final com as skills `ui-taste` e `ios-design` (Uizze, Apache-2.0, instaladas via `npx skills add https://uizze.sh/`).
 
