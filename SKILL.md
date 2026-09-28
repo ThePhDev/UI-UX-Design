@@ -79,6 +79,17 @@ Both paths then share Taste, Mobile, Motion, Copy, Gauntlet and Deliver.
   - `interface-review`: the review format for the combined critic.
   - `explain-interface/from-an-image.md`: decomposing a reference in Path A step 1.
   For simple interactive state changes (hover, press, open/close), use CSS transitions, which are interruptible. The pure-function-of-time rule in motion-craft.md is for choreography, scroll scenes and reels.
+- **Product and UX layer: CodeMakers-Design by Bueno / Code Makers** (local only in `vendor/codemakers/`, gitignored; it has no license, so it is never published). Use it when the job has real product behavior. Open `vendor/codemakers/INDEX.md` for the map, then **one chapter at a time**:
+  - `references/component-cookbook.md`: 36 component contracts with every state (rest, hover, focus, pressed, disabled, loading, empty, error, success). Use it on every interactive component in gate 3/7.
+  - `forms-workflows.md`: validation, multi-step forms, autosave, recovery.
+  - `product-playbooks.md`: 12 product types.
+  - `layout-recipes.md`: 14 page structures.
+  - `visual-debugging.md`: symptom, cause, fix.
+  - `responsive-adaptation.md` and `interaction-accessibility.md`.
+  - Studies (Apple, BMW, Air, Slush, LUNCH, Flying Papers) via `reference-synthesis.md`. Read `reference-normalization.md` before reusing their tokens.
+  - Search the library (32 styles, 24 palettes, 24 type pairs, 24 patterns): `python vendor/codemakers/scripts/search_design.py "<query>" --domain styles|palettes|typography|patterns|studies`.
+  - Check contrast: `python vendor/codemakers/scripts/contrast_check.py "#fg" "#bg"`.
+  - Its honesty rule also applies here: no invented testimonials, metrics, clients or scarcity; demo data is labeled as demo.
 - **The brief wins:** pinned fonts, palettes and eras beat any default here. Refining keeps the current identity; a redesign replaces it completely, so never polish the look you're discarding.
 
 ## Taste layer (the user's original tasteskill, always on)

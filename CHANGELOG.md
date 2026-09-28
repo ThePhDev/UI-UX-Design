@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.11.0 — 2026-09-28
+- **Camada de produto e UX**: a CodeMakers-Design (Bueno / Code Makers) fica em `vendor/codemakers/`, só local e no .gitignore (não tem licença, então não é publicada). Traz contratos de 36 componentes com todos os estados, formulários e jornadas, playbooks de 12 tipos de produto, 14 receitas de layout, diagnóstico visual, estudos de 6 marcas e a biblioteca pesquisável (`search_design.py`) + `contrast_check.py`.
+
 ## v1.10.2 — 2026-09-27
 - Item 4 do contrato aponta para a skill `no-slop-motion` (ferndesk, MIT) em filmes de lançamento/marca feitos no HyperFrames. O fio narrativo, as regras de mundo, os motivos da marca e a lista de defaults banidos também valem para o storytelling do site.
 
