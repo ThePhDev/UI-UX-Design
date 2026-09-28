@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.11.1 — 2026-09-28
+- Os arquivos de entrada das skills incluídas em `vendor/` (better-* e emil) passam a se chamar `GUIDE.md` em vez de `SKILL.md`. O upload de skills no claude.ai exige exatamente um SKILL.md por zip, e antes havia 11.
+
 ## v1.11.0 — 2026-09-28
 - **Camada de produto e UX**: a CodeMakers-Design (Bueno / Code Makers) fica em `vendor/codemakers/`, só local e no .gitignore (não tem licença, então não é publicada). Traz contratos de 36 componentes com todos os estados, formulários e jornadas, playbooks de 12 tipos de produto, 14 receitas de layout, diagnóstico visual, estudos de 6 marcas e a biblioteca pesquisável (`search_design.py`) + `contrast_check.py`.
 

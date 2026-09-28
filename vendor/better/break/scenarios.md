@@ -1,6 +1,6 @@
 # Scenario axes
 
-The menu step 2 of [SKILL.md](SKILL.md) selects from. Each axis carries a cue: the property of the component that makes the axis worth running. Cue matches, axis stays; cue fails, axis is dropped and the drop is named in the plan.
+The menu step 2 of [GUIDE.md](GUIDE.md) selects from. Each axis carries a cue: the property of the component that makes the axis worth running. Cue matches, axis stays; cue fails, axis is dropped and the drop is named in the plan.
 
 An axis that stays contributes its scenarios as written here, plus any value the component's own props make obviously worse, such as the longest option in a real dataset.
 
